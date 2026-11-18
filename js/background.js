@@ -33,7 +33,7 @@
   var D = 400, dp = new Float32Array(D * 3);
   for (var d = 0; d < D; d++) dp.set([(rand() - 0.5) * 70, (rand() - 0.5) * 50, -10 - rand() * 30], d * 3);
   var dg = new THREE.BufferGeometry(); dg.setAttribute('position', new THREE.BufferAttribute(dp, 3));
-  var dust = new THREE.Points(dg, new THREE.PointsMaterial({ size: 0.09, map: dot, color: 0x4c8dff, transparent: true, opacity: 0.35, depthWrite: false, blending: THREE.AdditiveBlending }));
+  var dust = new THREE.Points(dg, new THREE.PointsMaterial({ size: 0.09, map: dot, color: 0x4c8dff, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending }));
   scene.add(dust);
 
   /* ---------- WAVES: a sea of particles, crests lit in orange ---------- */
@@ -70,7 +70,7 @@
       '  float crest = smoothstep(2.4, 4.6, vH);',
       '  vec3 col = mix(uBlue, uOrange, crest);',
       '  if (vSeed > 0.985) col = uGreen;',
-      '  float glow = 0.35 + crest * 0.65;',
+      '  float glow = 0.5 + crest * 0.5;',
       '  gl_FragColor = vec4(col, a * vFade * glow);',
       '}'].join('\n')
   });
@@ -89,7 +89,7 @@
       '  vec3 p = mix(position, scatter, uDisperse) + drift;',
       '  vec4 mv = modelViewMatrix * vec4(p, 1.0);',
       '  gl_PointSize = uSize * uPix * (1.6 + seed * 1.6) * (24.0 / -mv.z);',
-      '  gl_Position = projectionMatrix * mv; vC = color; vA = 0.55 + seed * 0.45;',
+      '  gl_Position = projectionMatrix * mv; vC = color; vA = 0.7 + seed * 0.3;',
       '}'].join('\n'),
     fragmentShader: [
       'uniform float uAlpha; varying vec3 vC; varying float vA;',
@@ -146,7 +146,17 @@
     mode = m; dust.visible = logo.visible = m === 'logo'; waves.visible = m === 'waves';
     canvas.style.display = m === 'off' ? 'none' : '';
   }
+  /* Mistura aditiva soma luz: brilha sobre o fundo escuro, mas some sobre o
+     claro (somar luz ao quase branco não muda nada). No modo claro as
+     partículas usam a mistura normal e aparecem com a própria cor. */
+  function applyTheme() {
+    var light = document.documentElement.dataset.theme === 'light';
+    var blend = light ? THREE.NormalBlending : THREE.AdditiveBlending;
+    [lmat, wmat, dust.material].forEach(function (m) { if (m.blending !== blend) { m.blending = blend; m.needsUpdate = true; } });
+    dust.material.opacity = light ? 0.6 : 0.5;
+  }
   document.addEventListener('ms:a11y', function () {
+    applyTheme();
     reduce = isReduced();
     setMode(window.MSA11y.get('bg'));
     if (mode === 'off') return;
@@ -164,7 +174,7 @@
     logo.scale.setScalar(phone ? Math.min(visW * 0.42, visH * 0.2) : Math.min(visW * 0.34, visH * 0.42));
     logo.position.y = phone ? visH * 0.27 : visH * 0.06;
     lmat.uniforms.uSize.value = w < 640 ? 1.3 : 1;
-    lmat.uniforms.uAlpha.value = phone ? 0.42 : 1;
+    lmat.uniforms.uAlpha.value = phone ? 0.75 : 1.5;
   }
   fit();
   window.addEventListener('resize', fit);
@@ -203,5 +213,6 @@
   }
   document.addEventListener('visibilitychange', function () { if (!document.hidden && !reduce && mode !== 'off') { last = performance.now(); loop(); } });
   setMode(mode);
+  applyTheme();
   if (mode !== 'off') { if (reduce) frame(performance.now()); else loop(); }
 })();

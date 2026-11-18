@@ -518,7 +518,7 @@ main:focus { outline: none; }
 :root[data-theme="light"] .nav { background: rgba(250,251,248,.8); border-bottom-color: rgba(14,21,38,.08); }
 :root[data-theme="light"] :is(.cap-tabs, .connect, .url-box) { background: rgba(255,255,255,.88); }
 :root[data-theme="light"] .tabs { background: rgba(14,21,38,.05); }
-:root[data-theme="light"] .hero::after { background: radial-gradient(40% 24% at 50% 20%, rgba(250,251,248,.75), transparent 75%); }
+:root[data-theme="light"] .hero::after { background: radial-gradient(40% 24% at 50% 20%, rgba(250,251,248,.4), transparent 75%); }
 :root[data-theme="light"] :is(.hero .sub, .hero h1) { text-shadow: none; }
 :root[data-theme="light"] .kicker { color: #a34a15; }
 :root[data-theme="light"] .grad { background-image: linear-gradient(100deg, var(--blue) 10%, var(--orange) 95%); }
@@ -530,7 +530,6 @@ main:focus { outline: none; }
 :root[data-theme="light"] .via.w { color: #127a3a; background: rgba(22,163,74,.12); }
 /* Texto sobre laranja continua escuro nos dois modos (contraste acima de 7:1). */
 :root[data-theme="light"] :is(.btn-hot, .cap-tabs button[aria-selected="true"], .u2, .slider .handle span, .toast i, .ev .av) { color: #0b1220; }
-:root[data-theme="light"] #bg { opacity: .55; }
 
 /* =====================================================================
    Carrossel de modelos
