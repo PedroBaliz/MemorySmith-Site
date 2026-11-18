@@ -45,7 +45,7 @@ h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; font-we
 p { margin: 0; }
 .center { text-align: center; }
 .kicker { font: 600 0.95rem var(--display); letter-spacing: -0.01em; color: var(--orange-l); }
-.paper .kicker { color: #b4541a; }
+.paper .kicker { color: #a34a15; }
 .claim { font-size: clamp(2.8rem, 8.4vw, 7.4rem); }
 .claim-m { font-size: clamp(2.4rem, 6.2vw, 5.4rem); }
 .sub { font-size: clamp(1.1rem, 1.9vw, 1.45rem); color: var(--mist); max-width: 36ch; line-height: 1.45; letter-spacing: -0.01em; }
@@ -186,7 +186,7 @@ main, footer { position: relative; z-index: 1; }
 .pd-meta { color: var(--ink-soft); font-size: 0.88rem; }
 .pd-call { background: #e7edfb; border-left: 3px solid var(--blue); border-radius: 0 12px 12px 0; padding: 12px 16px; font-size: 0.93rem; }
 .pd-call b { color: var(--blue); margin-right: 6px; }
-.paperdoc h5 { margin: 6px 0 0; font: 600 0.75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #b4541a; }
+.paperdoc h5 { margin: 6px 0 0; font: 600 0.75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #a34a15; }
 .pd-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
 .pd-table th { text-align: left; font-weight: 600; padding: 8px 10px; background: var(--paper); }
 .pd-table td { padding: 8px 10px; border-bottom: 1px solid #e3e6e1; }
@@ -257,7 +257,7 @@ main, footer { position: relative; z-index: 1; }
 .tile span { position: relative; font: 0.74rem var(--mono); color: var(--white); background: rgba(11,18,32,.7); padding: 4px 8px; border-radius: 6px; justify-self: start; overflow-wrap: anywhere; }
 .tile.i1 { background: linear-gradient(160deg, #6b96ea 0%, #2b3a5c 55%, #ff9a45 140%); }
 .tile.i1::before { content: ""; position: absolute; inset: 30% 18% 0; background: linear-gradient(#edefec, #c9cec4); clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 100%, 0 100%); opacity: .85; }
-.tile.i2 { background: linear-gradient(200deg, #ff9a45 -20%, #b4541a 40%, #2b3a5c 100%); }
+.tile.i2 { background: linear-gradient(200deg, #ff9a45 -20%, #a34a15 40%, #2b3a5c 100%); }
 .tile.i2::before { content: ""; position: absolute; left: 14%; right: 14%; top: 28%; height: 34%; border-radius: 8px; background: rgba(237,239,236,.8); }
 .tile.pdf { background: var(--white); color: var(--ink); align-content: space-between; }
 .tile.pdf b { font: 700 2rem var(--display); color: #b42318; letter-spacing: -0.03em; }
@@ -350,7 +350,7 @@ main, footer { position: relative; z-index: 1; }
 .route .arrow::after { content: ""; position: absolute; right: -2px; top: -4px; border: 5px solid transparent; border-left: 7px solid var(--orange-l); }
 .route .dest { border-radius: 16px; padding: 16px 18px; font: 600 1rem var(--display); letter-spacing: -0.01em; color: var(--white); }
 .route .dest small { display: block; font: 400 0.78rem var(--body); opacity: .8; letter-spacing: 0; margin-top: 2px; }
-.d1 { background: var(--blue); } .d2 { background: #b4541a; } .d3 { background: #127a3a; } .d4 { background: #2b3a5c; }
+.d1 { background: var(--blue); } .d2 { background: #a34a15; } .d3 { background: #127a3a; } .d4 { background: #2b3a5c; }
 @media (max-width: 560px) { .route .row { grid-template-columns: minmax(0,1fr); } .route .arrow { display: none; } .route .dest { margin-top: -6px; } }
 
 /* moment 3: your way, before / after */
@@ -520,12 +520,12 @@ main:focus { outline: none; }
 :root[data-theme="light"] .tabs { background: rgba(14,21,38,.05); }
 :root[data-theme="light"] .hero::after { background: radial-gradient(40% 24% at 50% 20%, rgba(250,251,248,.75), transparent 75%); }
 :root[data-theme="light"] :is(.hero .sub, .hero h1) { text-shadow: none; }
-:root[data-theme="light"] .kicker { color: #b4541a; }
+:root[data-theme="light"] .kicker { color: #a34a15; }
 :root[data-theme="light"] .grad { background-image: linear-gradient(100deg, var(--blue) 10%, var(--orange) 95%); }
 :root[data-theme="light"] .ticks li::before { color: var(--green); }
 :root[data-theme="light"] .csteps li::before { color: var(--blue); background: rgba(15,86,215,.1); }
 :root[data-theme="light"] .csteps b { color: var(--ink); }
-:root[data-theme="light"] .via.c { color: #b4541a; background: rgba(255,138,43,.14); }
+:root[data-theme="light"] .via.c { color: #a34a15; background: rgba(255,138,43,.14); }
 :root[data-theme="light"] .via.g { color: var(--blue); background: rgba(15,86,215,.1); }
 :root[data-theme="light"] .via.w { color: #127a3a; background: rgba(22,163,74,.12); }
 /* Texto sobre laranja continua escuro nos dois modos (contraste acima de 7:1). */
