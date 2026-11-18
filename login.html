@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Entrar · MemorySmith</title>
+  <meta name="description" content="Entre na sua conta MemorySmith para abrir os seus cadernos.">
+  <meta name="theme-color" content="#0b1220">
+  <!-- Aplica tema, tamanho do texto e fundo salvos antes de desenhar a página, sem piscar. -->
+  <script>try{var a=JSON.parse(localStorage.getItem('ms-a11y')||'{}'),r=document.documentElement;r.dataset.theme=a.theme||'dark';if(a.font)r.dataset.font=a.font;if(a.bg)r.dataset.bg=a.bg;if(a.motion)r.dataset.motion=a.motion;if(a.links)r.dataset.links=a.links;}catch(e){}</script>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+<a class="skip" href="#top">Pular para o conteúdo</a>
+<canvas id="bg" aria-hidden="true"></canvas>
+<header class="nav">
+  <div class="wrap">
+    <a href="index.html" aria-label="MemorySmith, página inicial"><img src="assets/logo.svg" alt="MemorySmith"></a>
+    <div class="end">
+      <button type="button" class="theme-btn" data-theme-toggle aria-label="Ativar o modo claro">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+      </button>
+      <a href="index.html" class="back-link">← Voltar ao site</a>
+    </div>
+  </div>
+</header>
+
+<main id="top" tabindex="-1" class="login-main">
+  <div class="wrap login-wrap">
+    <div class="login-copy">
+      <span class="kicker">Sua conta</span>
+      <h1 class="claim-m">Bem-vindo de <span class="grad">volta</span>.</h1>
+      <p class="sub">Entre para abrir os seus cadernos na web. A mesma conta conecta o Claude, o ChatGPT e o Grok.</p>
+      <ul class="ticks">
+        <li>Seus cadernos, tabelas e painéis num lugar só</li>
+        <li>A trilha de cada mudança, com quem escreveu</li>
+        <li>Exportação do caderno inteiro quando quiser</li>
+      </ul>
+    </div>
+
+    <form class="login-card" id="login-form" novalidate>
+      <h2>Entrar</h2>
+      <div class="field">
+        <label for="lg-email">E-mail</label>
+        <input id="lg-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="lg-email-err">
+        <small class="err" id="lg-email-err"></small>
+      </div>
+      <div class="field">
+        <label for="lg-pass">Senha</label>
+        <div class="pw">
+          <input id="lg-pass" name="senha" type="password" autocomplete="current-password" required aria-describedby="lg-pass-err">
+          <button type="button" id="lg-toggle" aria-pressed="false" aria-label="Mostrar senha">Mostrar</button>
+        </div>
+        <small class="err" id="lg-pass-err"></small>
+      </div>
+      <div class="login-row">
+        <label class="check"><input type="checkbox" name="lembrar"> Lembrar de mim</label>
+        <a href="#" id="lg-forgot">Esqueci a senha</a>
+      </div>
+      <button type="submit" class="btn btn-hot" id="lg-submit">Entrar</button>
+      <div class="form-status" id="lg-status" role="status" aria-live="polite"></div>
+      <p class="login-alt">Ainda não tem conta? <a href="index.html#contato">Peça acesso</a></p>
+      <p class="demo-note">Página de demonstração: nenhum dado sai do seu navegador.</p>
+    </form>
+  </div>
+</main>
+
+<footer id="footer">
+  <div class="wrap">
+    <img src="assets/logo.svg" alt="MemorySmith">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="index.html#faq">Ajuda</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+      <li><a href="#a11y-panel" data-a11y-open>Acessibilidade</a></li>
+    </ul>
+    <span>© 2026 MemorySmith</span>
+  </div>
+</footer>
+
+  <script src="js/a11y.js"></script>
+  <script src="js/login.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/background.js"></script>
+</body>
+</html>
