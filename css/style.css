@@ -571,3 +571,31 @@ main:focus { outline: none; }
 .faq-count { font-size: 0.85rem; color: var(--ink-soft); }
 .faq-empty { padding-block: 22px; color: var(--ink-soft); }
 .faq-empty a { color: var(--blue); font-weight: 600; }
+
+/* =====================================================================
+   Contato e formulários
+   ===================================================================== */
+.contact-ways { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 14px; }
+.contact-ways li { display: grid; gap: 2px; border-top: 2px solid var(--ink); padding-top: 12px; }
+.contact-ways b { font: 600 1.05rem var(--display); letter-spacing: -0.01em; }
+.contact-ways span { color: var(--ink-soft); }
+.contact-form { --err: #b42318; --ok-fg: #0f5c2c; --ok-bg: #e6f4ea; --bad-fg: #8a1c12; --bad-bg: #fdecea;
+  background: var(--white); color: var(--ink); border-radius: 24px; padding: clamp(24px, 4vw, 40px); box-shadow: 0 40px 80px -40px rgba(14,21,38,.35); display: grid; gap: 18px; min-width: 0; }
+.row2 { display: grid; gap: 18px; }
+@media (min-width: 600px) { .row2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-weight: 600; font-size: 0.95rem; }
+.field input, .field select, .field textarea { width: 100%; font: 1rem var(--body); color: var(--ink); background: #f7f8f6; border: 1.5px solid #c9cec4; border-radius: 14px; padding: 13px 16px; transition: border-color .2s ease, box-shadow .2s ease; }
+.field textarea { resize: vertical; min-height: 130px; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(15,86,215,.18); }
+.field [aria-invalid="true"] { border-color: var(--err); }
+.hint-f { color: var(--ink-soft); font-size: 0.85rem; }
+.err { color: var(--err); font-size: 0.85rem; font-weight: 500; }
+.err:empty { display: none; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem; color: var(--ink-soft); cursor: pointer; }
+.check input { width: 18px; height: 18px; margin: 2px 0 0; flex-shrink: 0; accent-color: var(--blue); }
+.contact-form .btn, .final .btn { border: 0; cursor: pointer; justify-self: start; }
+.form-status { border-radius: 14px; padding: 14px 16px; font-size: 0.95rem; font-weight: 500; }
+.form-status:empty { display: none; }
+.form-status.ok { background: var(--ok-bg); color: var(--ok-fg); }
+.form-status.bad { background: var(--bad-bg); color: var(--bad-fg); }

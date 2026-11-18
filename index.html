@@ -24,6 +24,7 @@
       <li><a href="#para-quem">Para quem</a></li>
       <li><a href="#modelos">Modelos</a></li>
       <li><a href="#faq">Ajuda</a></li>
+      <li><a href="#contato">Contato</a></li>
     </ul>
     <div class="end">
       <button type="button" class="theme-btn" data-theme-toggle aria-label="Ativar o modo claro">
@@ -497,8 +498,56 @@ Migrar para o B. Ver <span class="l">[[Reunião 2026-11-12]]</span>.</pre>
           <details data-cat="conta"><summary>Por que preciso pedir acesso?</summary><p>As assinaturas são aprovadas uma a uma, para que a plataforma cresça sem perder qualidade.</p></details>
           <details data-cat="conta"><summary>Como eu entro na minha conta?</summary><p>Pelo botão Entrar, no topo da página. A mesma conta vale na web e em todas as IAs conectadas.</p></details>
         </div>
-        <p class="faq-empty" id="faq-empty" hidden>Nenhuma pergunta encontrada. <a href="#footer">Fale com a gente</a>.</p>
+        <p class="faq-empty" id="faq-empty" hidden>Nenhuma pergunta encontrada. <a href="#contato">Fale com a gente</a>.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="moment paper" id="contato">
+    <div class="wrap split">
+      <div class="copy">
+        <span class="kicker">Contato</span>
+        <h2 class="claim-m">Fale com a <span class="grad">gente</span>.</h2>
+        <p class="sub">Dúvidas, parcerias ou um pedido de acesso. Respondemos em até dois dias úteis.</p>
+        <ul class="contact-ways">
+          <li><b>E-mail</b><span>contato@memorysmith.app</span></li>
+          <li><b>Atendimento</b><span>De segunda a sexta, das 9h às 18h</span></li>
+        </ul>
+      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="row2">
+          <div class="field">
+            <label for="cf-name">Nome</label>
+            <input id="cf-name" name="nome" type="text" autocomplete="name" required aria-describedby="cf-name-err">
+            <small class="err" id="cf-name-err"></small>
+          </div>
+          <div class="field">
+            <label for="cf-email">E-mail</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="cf-email-err">
+            <small class="err" id="cf-email-err"></small>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-subject">Assunto</label>
+          <select id="cf-subject" name="assunto" required aria-describedby="cf-subject-err">
+            <option value="">Escolha um assunto</option>
+            <option value="acesso">Pedido de acesso</option>
+            <option value="produto">Dúvida sobre o produto</option>
+            <option value="parceria">Parceria</option>
+            <option value="outro">Outro assunto</option>
+          </select>
+          <small class="err" id="cf-subject-err"></small>
+        </div>
+        <div class="field">
+          <label for="cf-msg">Mensagem</label>
+          <textarea id="cf-msg" name="mensagem" rows="5" required aria-describedby="cf-msg-hint cf-msg-err"></textarea>
+          <small class="hint-f" id="cf-msg-hint">Conte um pouco de como você quer usar o MemorySmith.</small>
+          <small class="err" id="cf-msg-err"></small>
+        </div>
+        <label class="check"><input type="checkbox" name="novidades"> Quero receber novidades por e-mail, no máximo uma vez por mês.</label>
+        <button type="submit" class="btn btn-hot">Enviar mensagem</button>
+        <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
+      </form>
     </div>
   </section>
 
@@ -506,6 +555,7 @@ Migrar para o B. Ver <span class="l">[[Reunião 2026-11-12]]</span>.</pre>
     <div class="wrap">
       <h2 class="claim">Dê memória à sua <span class="grad">IA</span>.</h2>
       <p class="sub">Peça acesso hoje. Seu primeiro caderno fica pronto em minutos.</p>
+      <a class="btn btn-hot" href="#contato" data-subject="acesso">Pedir acesso</a>
       <small>Vagas liberadas aos poucos, uma assinatura de cada vez.</small>
     </div>
   </section>
@@ -515,7 +565,8 @@ Migrar para o B. Ver <span class="l">[[Reunião 2026-11-12]]</span>.</pre>
   <div class="wrap">
     <img src="assets/logo.svg" alt="MemorySmith">
     <ul>
-      <li><a href="#footer">Ajuda</a></li>
+      <li><a href="#faq">Ajuda</a></li>
+      <li><a href="#contato">Contato</a></li>
       <li><a href="#footer">Entrar</a></li>
       <li><a href="#a11y-panel" data-a11y-open>Acessibilidade</a></li>
       <li><a href="#top">English</a></li>

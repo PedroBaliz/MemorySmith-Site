@@ -176,4 +176,50 @@
     });
     run();
   })();
+
+  /* ---------- formulário de contato ----------
+     Valida no navegador, mostra o erro embaixo de cada campo (ligado pelo
+     aria-describedby) e leva o foco ao primeiro campo com problema. É uma
+     demonstração: nada é enviado a um servidor. */
+  (function () {
+    var form = $('contact-form');
+    if (!form) return;
+    var status = $('cf-status');
+    var rules = [
+      ['cf-name', function (v) { return v.trim().length >= 2 ? '' : 'Escreva o seu nome.'; }],
+      ['cf-email', function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? '' : 'Escreva um e-mail válido, como nome@exemplo.com.'; }],
+      ['cf-subject', function (v) { return v ? '' : 'Escolha um assunto.'; }],
+      ['cf-msg', function (v) { return v.trim().length >= 10 ? '' : 'A mensagem precisa ter pelo menos 10 caracteres.'; }]
+    ];
+    function check(r) {
+      var el = $(r[0]), msg = r[1](el.value);
+      el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      $(r[0] + '-err').textContent = msg;
+      return msg;
+    }
+    rules.forEach(function (r) {
+      $(r[0]).addEventListener('blur', function () { if (this.value || this.getAttribute('aria-invalid') === 'true') check(r); });
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var first = null;
+      rules.forEach(function (r) { if (check(r) && !first) first = $(r[0]); });
+      if (first) {
+        status.className = 'form-status bad';
+        status.textContent = 'Confira os campos destacados.';
+        first.focus();
+        return;
+      }
+      var name = $('cf-name').value.trim().split(/\s+/)[0];
+      status.className = 'form-status ok';
+      status.textContent = 'Obrigado, ' + name + '! Recebemos a sua mensagem e respondemos em até dois dias úteis.';
+      form.reset();
+      rules.forEach(function (r) { $(r[0]).removeAttribute('aria-invalid'); });
+    });
+    /* "Pedir acesso" já chega com o assunto escolhido. */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('[data-subject]');
+      if (a) $('cf-subject').value = a.dataset.subject;
+    });
+  })();
 })();
