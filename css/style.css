@@ -531,3 +531,26 @@ main:focus { outline: none; }
 /* Texto sobre laranja continua escuro nos dois modos (contraste acima de 7:1). */
 :root[data-theme="light"] :is(.btn-hot, .cap-tabs button[aria-selected="true"], .u2, .slider .handle span, .toast i, .ev .av) { color: #0b1220; }
 :root[data-theme="light"] #bg { opacity: .55; }
+
+/* =====================================================================
+   Carrossel de modelos
+   ===================================================================== */
+.carousel { max-width: 1000px; margin: clamp(48px, 7vw, 72px) auto 0; }
+.car-view { overflow: hidden; border-radius: 24px; border: 1px solid var(--night-line); background: var(--night-2); box-shadow: 0 40px 90px -30px rgba(0,0,0,.6); }
+.car-track { display: flex; transition: transform .6s cubic-bezier(.2,.7,.2,1); touch-action: pan-y; }
+.slide { flex: 0 0 100%; min-width: 0; margin: 0; display: grid; }
+.slide img { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; background: #0b1220; user-select: none; }
+.slide figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 20px; padding: 18px 24px; border-top: 1px solid var(--night-line); text-align: left; }
+.slide figcaption b { font: 600 1.2rem var(--display); letter-spacing: -0.02em; }
+.slide figcaption span { color: var(--mist); font-size: 0.95rem; }
+.car-ctrl { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; }
+.car-btn { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--night-line); background: var(--night-2); color: var(--paper); display: grid; place-items: center; cursor: pointer; transition: border-color .2s ease; }
+.car-btn:hover { border-color: var(--orange-l); }
+.car-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.car-btn .i-play, .car-btn.paused .i-pause { display: none; }
+.car-btn.paused .i-play { display: block; fill: currentColor; }
+.car-dots { display: flex; align-items: center; padding-inline: 6px; }
+.car-dots button { min-width: 24px; height: 24px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; }
+.car-dots button::before { content: ""; width: 10px; height: 10px; border-radius: 5px; background: var(--night-line); transition: width .3s ease, background .3s ease; }
+.car-dots button[aria-current="true"]::before { width: 28px; background: var(--orange); }
+@media (max-width: 560px) { .slide figcaption { padding: 14px 16px; } .car-btn { width: 42px; height: 42px; } }

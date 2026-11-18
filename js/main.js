@@ -91,4 +91,59 @@
     var fallback = function () { var r = document.createRange(); r.selectNodeContents(url); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selecionado'; setTimeout(function () { btn.textContent = 'Copiar'; }, 1600); };
     try { navigator.clipboard.writeText(url.textContent).then(done, fallback); } catch (e) { fallback(); }
   });
+
+  /* ---------- carrossel de modelos ----------
+     Botões, bolinhas, setas do teclado e deslizar com o dedo. Troca sozinho a
+     cada 6 s, mas pausa com o mouse ou o foco em cima, com o botão de pausa
+     (WCAG 2.2.2) e quando a pessoa pede menos movimento. */
+  (function () {
+    var box = $('carousel');
+    if (!box) return;
+    var track = $('car-track'), slides = track.children, n = slides.length, i = 0;
+    var dots = $('car-dots'), play = $('car-play'), live = $('car-live'), paused = false, over = false;
+    for (var k = 0; k < n; k++) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.dataset.go = k;
+      b.setAttribute('aria-label', 'Ir para o slide ' + (k + 1) + ' de ' + n);
+      dots.appendChild(b);
+    }
+    function go(to, say) {
+      i = (to + n) % n;
+      track.style.transform = 'translateX(' + (-100 * i) + '%)';
+      for (var k = 0; k < n; k++) {
+        var on = k === i;
+        slides[k].setAttribute('aria-hidden', on ? 'false' : 'true');
+        if (on) slides[k].removeAttribute('inert'); else slides[k].setAttribute('inert', '');
+        dots.children[k].setAttribute('aria-current', on ? 'true' : 'false');
+      }
+      if (say) live.textContent = 'Slide ' + (i + 1) + ' de ' + n + ': ' + slides[i].querySelector('b').textContent;
+    }
+    function setPaused(p) {
+      paused = p;
+      play.classList.toggle('paused', p);
+      play.setAttribute('aria-label', p ? 'Retomar a troca automática' : 'Pausar a troca automática');
+    }
+    setInterval(function () { if (!paused && !over && !document.hidden && !isReduced()) go(i + 1, false); }, 6000);
+    $('car-prev').addEventListener('click', function () { go(i - 1, true); });
+    $('car-next').addEventListener('click', function () { go(i + 1, true); });
+    play.addEventListener('click', function () { setPaused(!paused); });
+    dots.addEventListener('click', function (e) { var d = e.target.closest('[data-go]'); if (d) go(+d.dataset.go, true); });
+    box.addEventListener('mouseenter', function () { over = true; });
+    box.addEventListener('mouseleave', function () { over = false; });
+    box.addEventListener('focusin', function () { over = true; });
+    box.addEventListener('focusout', function (e) { if (!box.contains(e.relatedTarget)) over = false; });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { go(i - 1, true); e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { go(i + 1, true); e.preventDefault(); }
+    });
+    var x0 = null;
+    track.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+    track.addEventListener('pointercancel', function () { x0 = null; });
+    track.addEventListener('pointerup', function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1), true);
+    });
+    go(0, false);
+  })();
 })();
