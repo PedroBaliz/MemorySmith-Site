@@ -2,7 +2,14 @@
 
 Site estático de apresentação do MemorySmith, um produto de cadernos em Markdown que ensinam a IA (Claude, ChatGPT, Grok) a escrever do jeito da pessoa, no lugar certo. Feito com HTML, CSS e JavaScript puros, sem framework.
 
-## Como abrir
+## Site no ar
+
+- **Página inicial:** https://memorysmith.vercel.app/
+- **Login:** https://memorysmith.vercel.app/login.html
+
+O site é publicado na [Vercel](https://vercel.com/) a partir deste repositório. Por ser um site estático, não precisa de build: a Vercel serve os arquivos como estão.
+
+## Como abrir no computador
 
 Abra o `index.html` no navegador. Para evitar restrições do navegador com arquivos locais, prefira um servidor simples:
 
