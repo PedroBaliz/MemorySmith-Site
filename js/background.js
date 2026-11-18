@@ -1,6 +1,5 @@
-/* Two 3D backgrounds to compare, one renderer:
-   "logo"  — the brand symbol in particles, taken from its own file.
-   "waves" — a sea of particles, crests lit in orange.
+/* 3D background: the brand symbol in particles, taken from its own file,
+   over a faint dust for depth. It can be switched off in the accessibility panel.
    Brand colors in the book's proportion: blue leads, orange signals, green connects. */
 (function () {
   var canvas = document.getElementById('bg');
@@ -13,7 +12,6 @@
   /* Movimento e modo do fundo vêm do painel de acessibilidade (js/a11y.js). */
   function isReduced() { return window.MSA11y ? window.MSA11y.reduced() : !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
   var reduce = isReduced();
-  var BLUE = new THREE.Color('#4c8dff'), ORANGE = new THREE.Color('#ff9a45'), GREEN = new THREE.Color('#34c97a'), MIST = new THREE.Color('#a3adc2');
   var rand = (function (s) { return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }; })(11);
 
   var scene = new THREE.Scene();
@@ -35,46 +33,6 @@
   var dg = new THREE.BufferGeometry(); dg.setAttribute('position', new THREE.BufferAttribute(dp, 3));
   var dust = new THREE.Points(dg, new THREE.PointsMaterial({ size: 0.09, map: dot, color: 0x4c8dff, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending }));
   scene.add(dust);
-
-  /* ---------- WAVES: a sea of particles, crests lit in orange ---------- */
-  var COLS = 220, ROWS = 110, wpos = new Float32Array(COLS * ROWS * 3), wseed = new Float32Array(COLS * ROWS);
-  for (var r = 0, n = 0; r < ROWS; r++) for (var q2 = 0; q2 < COLS; q2++, n++) {
-    wpos[n * 3] = (q2 / (COLS - 1) - 0.5) * 140;
-    wpos[n * 3 + 1] = 0;
-    wpos[n * 3 + 2] = 20 - (r / (ROWS - 1)) * 130;
-    wseed[n] = rand();
-  }
-  var wg = new THREE.BufferGeometry();
-  wg.setAttribute('position', new THREE.BufferAttribute(wpos, 3));
-  wg.setAttribute('seed', new THREE.BufferAttribute(wseed, 1));
-  var wmat = new THREE.ShaderMaterial({
-    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    uniforms: { uTime: { value: 0 }, uScroll: { value: 0 }, uPix: { value: renderer.getPixelRatio() },
-      uBlue: { value: BLUE }, uOrange: { value: ORANGE }, uGreen: { value: GREEN } },
-    vertexShader: [
-      'attribute float seed; uniform float uTime, uScroll, uPix; varying float vH; varying float vFade; varying float vSeed;',
-      'void main(){',
-      '  vec3 p = position; float t = uTime * 0.5 + uScroll * 1.6;',
-      '  float h = sin(p.x * 0.08 + t) * 1.6 + sin(p.z * 0.11 - t * 1.3) * 1.3',
-      '          + sin((p.x + p.z) * 0.05 + t * 0.7) * 2.0 + sin(p.x * 0.23 - p.z * 0.17 + t * 1.9) * 0.35;',
-      '  p.y = h - 7.0; vH = h; vSeed = seed;',
-      '  vec4 mv = modelViewMatrix * vec4(p, 1.0);',
-      '  float d = -mv.z; vFade = smoothstep(130.0, 40.0, d) * smoothstep(2.0, 10.0, d);',
-      '  gl_PointSize = (1.4 + smoothstep(1.5, 4.5, h) * 1.6) * uPix * (60.0 / d);',
-      '  gl_Position = projectionMatrix * mv;',
-      '}'].join('\n'),
-    fragmentShader: [
-      'uniform vec3 uBlue, uOrange, uGreen; varying float vH; varying float vFade; varying float vSeed;',
-      'void main(){',
-      '  vec2 c = gl_PointCoord - 0.5; float a = smoothstep(0.5, 0.0, length(c));',
-      '  float crest = smoothstep(2.4, 4.6, vH);',
-      '  vec3 col = mix(uBlue, uOrange, crest);',
-      '  if (vSeed > 0.985) col = uGreen;',
-      '  float glow = 0.5 + crest * 0.5;',
-      '  gl_FragColor = vec4(col, a * vFade * glow);',
-      '}'].join('\n')
-  });
-  var waves = new THREE.Points(wg, wmat); scene.add(waves);
 
   /* ---------- LOGO: the brand symbol, sampled from its own file, in particles ---------- */
   var logo = new THREE.Group(); scene.add(logo);
@@ -142,9 +100,8 @@
   /* ---------- shared ---------- */
   var mode = window.MSA11y ? window.MSA11y.get('bg') : 'logo';
   function setMode(m) {
-    if (['waves', 'logo', 'off'].indexOf(m) < 0) m = 'logo';
-    mode = m; dust.visible = logo.visible = m === 'logo'; waves.visible = m === 'waves';
-    canvas.style.display = m === 'off' ? 'none' : '';
+    mode = m === 'off' ? 'off' : 'logo';
+    canvas.style.display = mode === 'off' ? 'none' : '';
   }
   /* Mistura aditiva soma luz: brilha sobre o fundo escuro, mas some sobre o
      claro (somar luz ao quase branco não muda nada). No modo claro as
@@ -152,7 +109,7 @@
   function applyTheme() {
     var light = document.documentElement.dataset.theme === 'light';
     var blend = light ? THREE.NormalBlending : THREE.AdditiveBlending;
-    [lmat, wmat, dust.material].forEach(function (m) { if (m.blending !== blend) { m.blending = blend; m.needsUpdate = true; } });
+    [lmat, dust.material].forEach(function (m) { if (m.blending !== blend) { m.blending = blend; m.needsUpdate = true; } });
     dust.material.opacity = light ? 0.6 : 0.5;
   }
   document.addEventListener('ms:a11y', function () {
@@ -188,20 +145,8 @@
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     var t = (now - t0) / 1000;
     sEase += (sy - sEase) * 0.06;
-    var scrollV = sEase - lastS; lastS = sEase;
-    if (reduce) { dt = 0; }
-    if (mode === 'logo') {
-      camera.position.set(0, 0, 24); camera.lookAt(0, 0, 0);
-      dust.rotation.y = t * 0.01 + sEase * 0.08;
-      updateLogo(t);
-    } else if (mode === 'waves') {
-      wmat.uniforms.uTime.value = reduce ? 3 : t;
-      wmat.uniforms.uScroll.value = sEase;
-      camera.position.x += (mx * 4 - camera.position.x) * 0.05;
-      camera.position.y += (3 - my * 2 - camera.position.y) * 0.05;
-      camera.position.z = 24;
-      camera.lookAt(0, -4, -30);
-    }
+    dust.rotation.y = t * 0.01 + sEase * 0.08;
+    updateLogo(t);
     renderer.render(scene, camera);
   }
   function loop() {

@@ -30,7 +30,7 @@ Depois acesse http://localhost:8000. É preciso internet para carregar as fontes
 │   ├── a11y.js           Painel de acessibilidade e tema (usado nas duas páginas)
 │   ├── main.js           Interações da página inicial
 │   ├── login.js          Validação e demonstração do login
-│   └── background.js     Fundo 3D com Three.js (modos Logo e Ondas)
+│   └── background.js     Fundo 3D com Three.js (logo em partículas)
 └── assets/
     ├── logo.svg          Logo do cabeçalho, rodapé e favicon
     └── img/              Imagens do carrossel (SVG)
@@ -60,8 +60,8 @@ Depois acesse http://localhost:8000. É preciso internet para carregar as fontes
 2. **Identidade visual em variáveis CSS.** As cores, fontes e espaçamentos ficam em variáveis no `:root` de `css/style.css` (`--night`, `--paper`, `--blue`, `--orange`...). A página alterna faixas escuras (noite) e painéis claros (papel), um "momento" por rolagem.
 3. **Layout responsivo.** CSS Grid e Flexbox, tamanhos com `clamp()` e regras `@media` para celular (720 px e menos), tablet e desktop.
 4. **Interações em JavaScript puro** (`js/main.js`): troca de cenas do hero, abas de capacidades, controle antes/depois, guias de conexão e botão Copiar.
-5. **Fundo 3D** (`js/background.js`): o logo desenhado em partículas com Three.js, que se desfaz ao rolar e se junta no final. Há também o modo Ondas.
-6. **Acessibilidade** (`js/a11y.js`): painel com tema claro/escuro, quatro tamanhos de texto, fundo animado (Logo, Ondas ou Desligado), animações reduzidas e links sublinhados. As escolhas ficam salvas no `localStorage` e valem nas duas páginas. Um script curto no `<head>` aplica a escolha antes de desenhar a página, para o tema não piscar.
+5. **Fundo 3D** (`js/background.js`): o logo desenhado em partículas com Three.js, que se desfaz ao rolar e se junta no final.
+6. **Acessibilidade** (`js/a11y.js`): painel com tema claro/escuro, quatro tamanhos de texto, fundo animado (ligado ou desligado), animações reduzidas e links sublinhados. As escolhas ficam salvas no `localStorage` e valem nas duas páginas. Um script curto no `<head>` aplica a escolha antes de desenhar a página, para o tema não piscar.
 7. **Modo claro.** As variáveis de cor trocam de valor com `:root[data-theme="light"]`. As telas do produto (janela do app, planilha, painel, Kanban) continuam escuras, como prints de um app de tema escuro.
 8. **Carrossel** (`#modelos`): quatro imagens SVG desenhadas na paleta do site, com botões, bolinhas, setas do teclado, deslizar com o dedo, troca automática a cada 6 s e botão de pausar.
 9. **Perguntas com pesquisa**: busca que ignora acentos e maiúsculas e abas Todas, Produto, Privacidade e Conta.

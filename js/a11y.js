@@ -6,6 +6,7 @@
   var DEF = { theme: 'dark', font: '0', bg: 'logo', motion: 'auto', links: 'off' };
   var s = {};
   try { s = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) {}
+  if (s.bg && s.bg !== 'off') s.bg = 'logo'; /* o antigo modo Ondas saiu do site */
   function get(k) { return s[k] != null ? String(s[k]) : DEF[k]; }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
   var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
@@ -15,7 +16,7 @@
   var groups = [
     ['theme', 'Tema', [['dark', 'Escuro'], ['light', 'Claro']]],
     ['font', 'Tamanho do texto', [['0', 'A', 'normal'], ['1', 'A+', 'grande'], ['2', 'A++', 'maior'], ['3', 'A+++', 'muito grande']]],
-    ['bg', 'Fundo animado', [['logo', 'Logo'], ['waves', 'Ondas'], ['off', 'Desligado']]],
+    ['bg', 'Fundo animado', [['logo', 'Ligado'], ['off', 'Desligado']]],
     ['motion', 'Animações', [['auto', 'Normais'], ['reduce', 'Reduzidas']]],
     ['links', 'Links', [['off', 'Padrão'], ['on', 'Sublinhados']]]
   ];
