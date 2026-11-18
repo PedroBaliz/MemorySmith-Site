@@ -280,7 +280,7 @@ main, footer { position: relative; z-index: 1; }
 
 .paper, .white { border-radius: clamp(24px, 4vw, 44px); margin-inline: clamp(8px, 1.6vw, 22px); box-shadow: 0 40px 120px -40px rgba(0,0,0,.6); }
 .hero::before { opacity: .7; }
-.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(40% 24% at 50% 20%, rgba(11,18,32,.6), transparent 75%); }
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(40% 24% at 50% 20%, rgba(11,18,32,.3), transparent 75%); }
 .hero .wrap { z-index: 2; }
 .hero .wrap { position: relative; display: grid; gap: 30px; justify-items: center; text-align: center; }
 .hero .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 10px; }

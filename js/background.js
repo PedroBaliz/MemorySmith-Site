@@ -88,12 +88,12 @@
       '  vec3 drift = vec3(sin(t), cos(t * 1.3), sin(t * 0.7)) * (0.006 + uDisperse * 0.05);',
       '  vec3 p = mix(position, scatter, uDisperse) + drift;',
       '  vec4 mv = modelViewMatrix * vec4(p, 1.0);',
-      '  gl_PointSize = uSize * uPix * (1.6 + seed * 1.6) * (24.0 / -mv.z);',
+      '  gl_PointSize = uSize * uPix * (2.0 + seed * 1.6) * (24.0 / -mv.z);',
       '  gl_Position = projectionMatrix * mv; vC = color; vA = 0.7 + seed * 0.3;',
       '}'].join('\n'),
     fragmentShader: [
       'uniform float uAlpha; varying vec3 vC; varying float vA;',
-      'void main(){ float a = smoothstep(0.5, 0.05, length(gl_PointCoord - 0.5)); gl_FragColor = vec4(vC, a * vA * uAlpha); }'].join('\n')
+      'void main(){ float a = smoothstep(0.5, 0.3, length(gl_PointCoord - 0.5)); gl_FragColor = vec4(vC, a * vA * uAlpha); }'].join('\n')
   });
   var logoReady = false;
   (function buildLogo() {
