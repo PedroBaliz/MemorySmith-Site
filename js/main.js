@@ -216,10 +216,5 @@
       form.reset();
       rules.forEach(function (r) { $(r[0]).removeAttribute('aria-invalid'); });
     });
-    /* "Pedir acesso" já chega com o assunto escolhido. */
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('[data-subject]');
-      if (a) $('cf-subject').value = a.dataset.subject;
-    });
   })();
 })();
