@@ -146,4 +146,34 @@
     });
     go(0, false);
   })();
+
+  /* ---------- perguntas: pesquisa e abas por tema ----------
+     A busca ignora maiúsculas e acentos ("preco" acha "preço"). */
+  (function () {
+    var q = $('faq-q');
+    if (!q) return;
+    var items = document.querySelectorAll('#faq-list details'), cat = 'all';
+    function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+    function run() {
+      var term = norm(q.value.trim()), shown = 0;
+      for (var k = 0; k < items.length; k++) {
+        var d = items[k];
+        var show = (cat === 'all' || d.dataset.cat === cat) && (!term || norm(d.textContent).indexOf(term) >= 0);
+        d.hidden = !show;
+        if (show) { shown++; if (term) d.open = true; }
+      }
+      $('faq-empty').hidden = shown > 0;
+      $('faq-count').textContent = shown === items.length ? items.length + ' perguntas' : shown + ' de ' + items.length + ' perguntas';
+    }
+    q.addEventListener('input', run);
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-faq]');
+      if (!b) return;
+      cat = b.dataset.faq;
+      var bs = document.querySelectorAll('[data-faq]');
+      for (var k = 0; k < bs.length; k++) bs[k].setAttribute('aria-pressed', bs[k] === b ? 'true' : 'false');
+      run();
+    });
+    run();
+  })();
 })();

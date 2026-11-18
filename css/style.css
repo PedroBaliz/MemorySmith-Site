@@ -554,3 +554,20 @@ main:focus { outline: none; }
 .car-dots button::before { content: ""; width: 10px; height: 10px; border-radius: 5px; background: var(--night-line); transition: width .3s ease, background .3s ease; }
 .car-dots button[aria-current="true"]::before { width: 28px; background: var(--orange); }
 @media (max-width: 560px) { .slide figcaption { padding: 14px 16px; } .car-btn { width: 42px; height: 42px; } }
+
+/* =====================================================================
+   Perguntas: pesquisa e abas por tema (a seção é sempre clara)
+   ===================================================================== */
+.faq-tools { display: grid; gap: 14px; margin-bottom: 20px; }
+.faq-search { display: flex; align-items: center; gap: 10px; background: #f7f8f6; border: 1.5px solid #c9cec4; border-radius: 999px; padding: 12px 18px; color: var(--ink-soft); }
+.faq-search:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(15,86,215,.18); }
+.faq-search svg { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.faq-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: 1rem var(--body); }
+.faq-search input::placeholder { color: #6b7385; }
+.faq-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.faq-tabs button { font: 500 0.92rem var(--body); border: 1px solid #d9ddd5; border-radius: 999px; padding: 9px 18px; background: transparent; color: var(--ink-soft); cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.faq-tabs button:hover { border-color: var(--ink); color: var(--ink); }
+.faq-tabs button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.faq-count { font-size: 0.85rem; color: var(--ink-soft); }
+.faq-empty { padding-block: 22px; color: var(--ink-soft); }
+.faq-empty a { color: var(--blue); font-weight: 600; }

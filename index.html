@@ -473,11 +473,31 @@ Migrar para o B. Ver <span class="l">[[Reunião 2026-11-12]]</span>.</pre>
         <h2 class="claim-m">Ainda em <span class="grad">dúvida</span>?</h2>
       </div>
       <div class="faq">
-        <details open><summary>Preciso saber Markdown?</summary><p>Não. Você pede em linguagem natural e a IA escreve. Na web, você lê e edita cada nota direto na página.</p></details>
-        <details><summary>Funciona com qual IA?</summary><p>Com o Claude, com o ChatGPT, com o Grok e com qualquer cliente que fale MCP, o protocolo aberto de conectores para IA.</p></details>
-        <details><summary>Quem consegue ver o meu conteúdo?</summary><p>Só você e quem você convidar. Cada assinatura é isolada das outras, e nem a administração da plataforma alcança o seu conteúdo.</p></details>
-        <details><summary>Posso levar meus cadernos embora?</summary><p>Pode, quando quiser. A exportação leva o caderno inteiro, e tudo é Markdown, num formato publicado e aberto.</p></details>
-        <details><summary>Por que preciso pedir acesso?</summary><p>As assinaturas são aprovadas uma a uma, para que a plataforma cresça sem perder qualidade.</p></details>
+        <div class="faq-tools">
+          <label class="faq-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <span class="sr">Pesquisar nas perguntas</span>
+            <input type="search" id="faq-q" placeholder="Pesquisar nas perguntas" autocomplete="off">
+          </label>
+          <div class="faq-tabs" role="group" aria-label="Filtrar perguntas por tema">
+            <button type="button" data-faq="all" aria-pressed="true">Todas</button>
+            <button type="button" data-faq="produto" aria-pressed="false">Produto</button>
+            <button type="button" data-faq="privacidade" aria-pressed="false">Privacidade</button>
+            <button type="button" data-faq="conta" aria-pressed="false">Conta</button>
+          </div>
+          <p class="faq-count" id="faq-count" aria-live="polite"></p>
+        </div>
+        <div id="faq-list">
+          <details data-cat="produto" open><summary>Preciso saber Markdown?</summary><p>Não. Você pede em linguagem natural e a IA escreve. Na web, você lê e edita cada nota direto na página.</p></details>
+          <details data-cat="produto"><summary>Funciona com qual IA?</summary><p>Com o Claude, com o ChatGPT, com o Grok e com qualquer cliente que fale MCP, o protocolo aberto de conectores para IA.</p></details>
+          <details data-cat="produto"><summary>O que é a Orientação?</summary><p>É a página de regras do caderno: como as notas são escritas, onde cada coisa vai e em que tom. Toda IA conectada lê a Orientação antes de escrever.</p></details>
+          <details data-cat="produto"><summary>Dá para usar planilhas e painéis?</summary><p>Dá. Você importa CSV ou Excel como tabela e pede painéis com indicadores, gráficos, Gantt e Kanban, que se atualizam junto com a tabela.</p></details>
+          <details data-cat="privacidade"><summary>Quem consegue ver o meu conteúdo?</summary><p>Só você e quem você convidar. Cada assinatura é isolada das outras, e nem a administração da plataforma alcança o seu conteúdo.</p></details>
+          <details data-cat="privacidade"><summary>Posso levar meus cadernos embora?</summary><p>Pode, quando quiser. A exportação leva o caderno inteiro, e tudo é Markdown, num formato publicado e aberto.</p></details>
+          <details data-cat="conta"><summary>Por que preciso pedir acesso?</summary><p>As assinaturas são aprovadas uma a uma, para que a plataforma cresça sem perder qualidade.</p></details>
+          <details data-cat="conta"><summary>Como eu entro na minha conta?</summary><p>Pelo botão Entrar, no topo da página. A mesma conta vale na web e em todas as IAs conectadas.</p></details>
+        </div>
+        <p class="faq-empty" id="faq-empty" hidden>Nenhuma pergunta encontrada. <a href="#footer">Fale com a gente</a>.</p>
       </div>
     </div>
   </section>
