@@ -53,7 +53,9 @@
       [doc, chat, toast].forEach(function (el) { el.classList.remove('out'); });
     }, 450);
   }
-  if (!reduce) setInterval(function () { if (document.hidden) return; cur = (cur + 1) % scenes.length; showScene(cur); }, 7000);
+  /* Menos movimento: o painel de acessibilidade ou o sistema pausam a troca. */
+  function isReduced() { return window.MSA11y ? window.MSA11y.reduced() : reduce; }
+  setInterval(function () { if (document.hidden || isReduced()) return; cur = (cur + 1) % scenes.length; showScene(cur); }, 7000);
 
   /* ---------- capabilities tabs ---------- */
   document.addEventListener("click", function (e) {
