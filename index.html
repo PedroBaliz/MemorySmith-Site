@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MemorySmith Home</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="bgswitch" role="group" aria-label="Fundo 3D"><span>Fundo</span><button type="button" data-mode="logo" aria-pressed="true">Logo</button><button type="button" data-mode="waves" aria-pressed="false">Ondas</button></div>
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" aria-label="MemorySmith, início"><img src="assets/logo.svg" alt="MemorySmith"></a>
+    <ul>
+      <li><a href="#lembra">Produto</a></li>
+      <li><a href="#para-quem">Para quem</a></li>
+      <li><a href="#footer">Ajuda</a></li>
+    </ul>
+    <div class="end">
+      <a href="#footer">Entrar</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <h1 class="claim">Sua IA, finalmente <span class="grad">organizada</span>.</h1>
+      <p class="sub">Ensine uma vez como você trabalha. Ela escreve do seu jeito, no lugar certo, para sempre.</p>
+      <div class="with"><span>Funciona dentro de</span><b>Claude</b><b>ChatGPT</b><b>Grok</b><b>qualquer cliente MCP</b></div>
+
+      <div class="shot" role="img" aria-label="Tela do MemorySmith: o Claude acabou de criar uma nota de decisão na pasta certa do caderno">
+        <div class="toast swap" id="h-toast"><i>✓</i><div><b id="h-tb">Claude escreveu em Decisões/</b><span id="h-ts">ADR-014 · seguiu o modelo da pasta</span></div></div>
+        <div class="window">
+          <div class="bar"><i></i><i></i><i></i><span>memorysmith.app</span><span class="dots" id="h-dots" aria-hidden="true"><b class="on"></b><b></b><b></b></span></div>
+          <div class="app">
+            <div class="side" id="h-side">
+              <span class="nb">Projeto Atlas</span>
+              <div data-f="ent">Entrevistas <b>23</b></div>
+              <div data-f="hip">Hipóteses <b>9</b></div>
+              <div data-f="dec" class="on">Decisões <b>14</b></div>
+              <div data-f="reu">Reuniões <b>41</b></div>
+              <div data-f="tab">Tabelas <b>3</b></div>
+              <div data-f="pai">Painéis <b>2</b></div>
+            </div>
+            <div class="doc swap" id="h-doc">
+              <div class="meta"><span class="ok">aceita</span><span>17 nov 2026</span><span>infra</span><span>e-mail</span></div>
+              <h3>ADR-014 · Fornecedor de e-mail</h3>
+              <h4>Contexto</h4>
+              <p>O fornecedor A não entregava no Outlook. Três clientes reclamaram na mesma semana, como registrado em <a>Reunião 2026-11-12</a>.</p>
+              <h4>Decisão</h4>
+              <p>Migrar para o fornecedor B até o fim do mês.</p>
+            </div>
+            <div class="chat swap" id="h-chat">
+              <small>Claude</small>
+              <div class="msg you">Registra que escolhemos o fornecedor B para os e-mails.</div>
+              <div class="msg ai">Li a Orientação do caderno. Decisões viram ADR numerado. <em>Criei o ADR-014 em Decisões/</em>, com contexto e link para a reunião.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="moment" id="capacidades">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker">Um caderno que faz de tudo</span>
+        <h2 class="claim-m">Funciona como os programas que você já usa. Só que você <span class="grad">pede</span>.</h2>
+        <p class="sub">Editor de textos, planilha, BI, gerenciador de projetos, drive. Tudo num caderno só, e cada coisa ligada às outras.</p>
+      </div>
+
+      <div class="cap-tabs" role="tablist" aria-label="Capacidades">
+        <button type="button" role="tab" data-cap="doc" aria-selected="true">Como um editor de textos</button>
+        <button type="button" role="tab" data-cap="sheet" aria-selected="false">Como uma planilha</button>
+        <button type="button" role="tab" data-cap="dash" aria-selected="false">Como um BI</button>
+        <button type="button" role="tab" data-cap="proj" aria-selected="false">Como um gestor de projetos</button>
+        <button type="button" role="tab" data-cap="file" aria-selected="false">Como um drive</button>
+        <button type="button" role="tab" data-cap="find" aria-selected="false">Como um buscador</button>
+      </div>
+
+      <!-- DOCUMENTOS -->
+      <div class="cap" data-pane="doc">
+        <div class="cap-copy">
+          <div class="prompt"><span>Você pede</span>“Transforma a reunião de hoje numa ata, com as tarefas de cada um, e gera o PDF.”</div>
+          <h3>Como um editor de textos. Sem formatar nada.</h3>
+          <ul class="ticks">
+            <li>Títulos, tabelas, listas de tarefas e caixas de destaque</li>
+            <li>Impressão e PDF de qualquer nota</li>
+            <li>Cada versão guardada, com quem escreveu</li>
+            <li>Modelos que deixam todo documento no mesmo padrão</li>
+          </ul>
+        </div>
+        <div class="cap-shot">
+          <div class="paperdoc">
+            <div class="pd-top"><span>Reuniões / Ata 2026-11-17</span><span class="pd-btn">⤓ PDF</span></div>
+            <h4>Ata · Planejamento do lançamento</h4>
+            <p class="pd-meta">17 nov 2026 · Ana, Bruno, Carla · 45 min</p>
+            <div class="pd-call"><b>Decisão</b> Lançamento confirmado para 2 de dezembro, com a campanha começando uma semana antes.</div>
+            <h5>Tarefas</h5>
+            <table class="pd-table">
+              <thead><tr><th>Tarefa</th><th>Responsável</th><th>Prazo</th></tr></thead>
+              <tbody>
+                <tr><td>Fechar o texto da campanha</td><td>Ana</td><td>21 nov</td></tr>
+                <tr><td>Testar os e-mails no Outlook</td><td>Bruno</td><td>24 nov</td></tr>
+                <tr><td>Treinar o time de suporte</td><td>Carla</td><td>28 nov</td></tr>
+              </tbody>
+            </table>
+            <h5>Próximos passos</h5>
+            <ul class="pd-check"><li class="ok">Aprovar orçamento de mídia</li><li>Revisar a página de preços</li><li>Agendar a reunião de go/no-go</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLANILHAS -->
+      <div class="cap" data-pane="sheet" hidden>
+        <div class="cap-copy">
+          <div class="prompt"><span>Você pede</span>“Importa esta planilha de vendas e me mostra as 5 maiores do Sul.”</div>
+          <h3>Como uma planilha. Sem escrever fórmula.</h3>
+          <ul class="ticks">
+            <li>Importa CSV e Excel, inclusive no formato brasileiro</li>
+            <li>Filtros, ordenação e somas pedidos em português</li>
+            <li>Linhas inseridas e corrigidas direto pela conversa</li>
+            <li>Confere o arquivo inteiro antes de gravar qualquer linha</li>
+          </ul>
+        </div>
+        <div class="cap-shot">
+          <div class="grid-ui">
+            <div class="gu-top"><b>Vendas 2026</b><span class="chip-f">região = Sul</span><span class="chip-f">ordem: valor ↓</span><span class="gu-src">vendas.xlsx</span></div>
+            <div class="gu-scroll">
+              <table class="gu">
+                <thead><tr><th class="n">#</th><th>Cliente</th><th>Região</th><th>Data</th><th class="r">Valor</th><th>Etapa</th></tr></thead>
+                <tbody>
+                  <tr><td class="n">1</td><td>Loja Norte</td><td>Sul</td><td>03/11/2026</td><td class="r">R$ 48.900</td><td><span class="st s3">Fechado</span></td></tr>
+                  <tr><td class="n">2</td><td>Grupo Vale</td><td>Sul</td><td>28/10/2026</td><td class="r">R$ 41.200</td><td><span class="st s3">Fechado</span></td></tr>
+                  <tr><td class="n">3</td><td>Atacado Rio</td><td>Sul</td><td>12/11/2026</td><td class="r">R$ 36.750</td><td><span class="st s2">Negociação</span></td></tr>
+                  <tr><td class="n">4</td><td>Casa Bela</td><td>Sul</td><td>09/11/2026</td><td class="r">R$ 29.300</td><td><span class="st s2">Negociação</span></td></tr>
+                  <tr><td class="n">5</td><td>Ferragens Sol</td><td>Sul</td><td>15/11/2026</td><td class="r">R$ 22.480</td><td><span class="st s1">Proposta</span></td></tr>
+                </tbody>
+                <tfoot><tr><td></td><td colspan="3">5 de 212 linhas</td><td class="r">R$ 178.630</td><td></td></tr></tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAINÉIS -->
+      <div class="cap" data-pane="dash" hidden>
+        <div class="cap-copy">
+          <div class="prompt"><span>Você pede</span>“Monta um painel de vendas do trimestre, por mês e por região.”</div>
+          <h3>Como um BI. Sem montar gráfico.</h3>
+          <ul class="ticks">
+            <li>Indicadores, barras, linhas, pizza, funil, cascata, mapa de calor, velocímetro e mais</li>
+            <li>Clique num gráfico e o painel inteiro filtra junto</li>
+            <li>Filtros de período e atualização automática</li>
+            <li>Baixe o painel como imagem, do jeito que você vê</li>
+          </ul>
+        </div>
+        <div class="cap-shot">
+          <div class="dash-ui">
+            <div class="kpis">
+              <div><span>Receita</span><b>R$ 482 mil</b><em class="up">▲ 12%</em></div>
+              <div><span>Ticket médio</span><b>R$ 1.270</b><em class="up">▲ 4%</em></div>
+              <div><span>Novos clientes</span><b>38</b><em class="dn">▼ 3</em></div>
+            </div>
+            <div class="charts">
+              <div class="chart">
+                <span class="ct">Receita por mês</span>
+                <svg viewBox="0 0 260 130" role="img" aria-label="Barras de receita de setembro a novembro, crescendo">
+                  <line x1="10" y1="110" x2="250" y2="110" stroke="#1f2c47"/>
+                  <g fill="#4c8dff"><rect x="28" y="56" width="40" height="54" rx="4"/><rect x="108" y="40" width="40" height="70" rx="4"/></g>
+                  <rect x="188" y="18" width="40" height="92" rx="4" fill="#ff9a45"/>
+                  <g fill="#a3adc2" font-size="10" font-family="Inter, sans-serif" text-anchor="middle"><text x="48" y="124">set</text><text x="128" y="124">out</text><text x="208" y="124">nov</text></g>
+                  <g fill="#edefec" font-size="10" font-family="Inter, sans-serif" text-anchor="middle"><text x="48" y="50">138</text><text x="128" y="34">162</text><text x="208" y="12">182</text></g>
+                </svg>
+              </div>
+              <div class="chart">
+                <span class="ct">Por região</span>
+                <svg viewBox="0 0 130 130" role="img" aria-label="Rosca: Sul 45%, Sudeste 35%, outras 20%">
+                  <circle cx="65" cy="62" r="40" fill="none" stroke="#1f2c47" stroke-width="18"/>
+                  <circle cx="65" cy="62" r="40" fill="none" stroke="#4c8dff" stroke-width="18" stroke-dasharray="113 138" transform="rotate(-90 65 62)"/>
+                  <circle cx="65" cy="62" r="40" fill="none" stroke="#ff9a45" stroke-width="18" stroke-dasharray="88 163" stroke-dashoffset="-113" transform="rotate(-90 65 62)"/>
+                  <circle cx="65" cy="62" r="40" fill="none" stroke="#34c97a" stroke-width="18" stroke-dasharray="50 201" stroke-dashoffset="-201" transform="rotate(-90 65 62)"/>
+                  <text x="65" y="66" fill="#edefec" font-size="13" font-weight="600" font-family="Space Grotesk, sans-serif" text-anchor="middle">Sul 45%</text>
+                </svg>
+              </div>
+              <div class="chart wide">
+                <span class="ct">Funil</span>
+                <div class="funnel"><i style="--w:100%">Lead 120</i><i style="--w:72%">Proposta 54</i><i style="--w:56%">Negociação 41</i><i style="--w:44%" class="hot">Fechado 38</i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJETOS -->
+      <div class="cap" data-pane="proj" hidden>
+        <div class="cap-copy">
+          <div class="prompt"><span>Você pede</span>“Organiza o lançamento num cronograma e num quadro de tarefas.”</div>
+          <h3>Como um gestor de projetos. Sem arrastar cartão.</h3>
+          <ul class="ticks">
+            <li>Gantt e Kanban montados a partir de uma tabela</li>
+            <li>Estrutura de entregas com o progresso somado das partes</li>
+            <li>Linha do tempo e calendário dos eventos</li>
+            <li>A IA move as tarefas quando você conta o que mudou</li>
+          </ul>
+        </div>
+        <div class="cap-shot">
+          <div class="proj-ui">
+            <div class="gantt">
+              <div class="gh"><span></span><span>18 nov</span><span>25 nov</span><span>2 dez</span></div>
+              <div class="gr"><span>Campanha</span><i style="--s:0;--e:55%;--c:#4c8dff"></i></div>
+              <div class="gr"><span>E-mails</span><i style="--s:20%;--e:60%;--c:#4c8dff"></i></div>
+              <div class="gr"><span>Suporte</span><i style="--s:40%;--e:80%;--c:#34c97a"></i></div>
+              <div class="gr"><span>Lançamento</span><i class="ms" style="--s:92%;--e:96%;--c:#ff9a45"></i></div>
+            </div>
+            <div class="kanban">
+              <div><span class="kh">A fazer</span><p>Página de preços</p><p>Go/no-go</p></div>
+              <div><span class="kh">Fazendo</span><p class="hot">Texto da campanha</p><p>Teste no Outlook</p></div>
+              <div><span class="kh">Feito</span><p class="done">Orçamento de mídia</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARQUIVOS -->
+      <div class="cap" data-pane="file" hidden>
+        <div class="cap-copy">
+          <div class="prompt"><span>Você pede</span>“Guarda as fotos da obra, o áudio da visita e o contrato na nota de hoje.”</div>
+          <h3>Como um drive. Sem procurar pasta.</h3>
+          <ul class="ticks">
+            <li>Arquivos guardados no tamanho original</li>
+            <li>Embutidos na nota pelo nome, onde fazem sentido</li>
+            <li>A IA envia, lê e organiza os anexos</li>
+            <li>Tudo vai junto quando você exporta o caderno</li>
+          </ul>
+        </div>
+        <div class="cap-shot">
+          <div class="files-ui">
+            <div class="fn-head"><b>Visita à obra · 17 nov</b><span>4 arquivos</span></div>
+            <div class="tiles">
+              <div class="tile img i1"><span>fachada.jpg · 4,2 MB</span></div>
+              <div class="tile img i2"><span>cozinha.jpg · 3,8 MB</span></div>
+              <div class="tile pdf"><b>PDF</b><span>contrato-reforma.pdf · 1,1 MB</span></div>
+              <div class="tile aud"><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span>visita.m4a · 6:12</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUSCA -->
+      <div class="cap" data-pane="find" hidden>
+        <div class="cap-copy">
+          <div class="prompt"><span>Você pede</span>“O que a gente já decidiu sobre preço?”</div>
+          <h3>Como um buscador. Só que do que você sabe.</h3>
+          <ul class="ticks">
+            <li>Busca por texto, por pasta e pelas propriedades de cada nota</li>
+            <li>Grafo dos links entre as notas</li>
+            <li>Notas relacionadas e quem aponta para cada uma</li>
+            <li>A IA responde citando as notas de onde tirou</li>
+          </ul>
+        </div>
+        <div class="cap-shot">
+          <div class="find-ui">
+            <div class="fsearch">⌕ <span>preço</span><em>3 notas</em></div>
+            <div class="fres"><b>ADR-013 Cobrança anual</b><span>Decisões/ · “…anual com 20% de desconto sobre o <mark>preço</mark> mensal…”</span></div>
+            <div class="fres"><b>Reunião 2026-10-30</b><span>Reuniões/ · “…testar dois <mark>preços</mark> na página…”</span></div>
+            <div class="fres"><b>Entrevista Carla, Loja Norte</b><span>Entrevistas/ · “…acha o <mark>preço</mark> justo se tiver suporte…”</span></div>
+            <svg class="mini-graph" viewBox="0 0 300 90" aria-hidden="true">
+              <g stroke="#1f2c47" stroke-width="1.5"><line x1="40" y1="45" x2="120" y2="25"/><line x1="40" y1="45" x2="120" y2="68"/><line x1="120" y1="25" x2="200" y2="45"/><line x1="120" y1="68" x2="200" y2="45"/><line x1="200" y1="45" x2="270" y2="22"/><line x1="200" y1="45" x2="270" y2="70"/></g>
+              <circle cx="40" cy="45" r="7" fill="#4c8dff"/><circle cx="120" cy="25" r="6" fill="#4c8dff"/><circle cx="120" cy="68" r="6" fill="#34c97a"/><circle cx="200" cy="45" r="9" fill="#ff9a45"/><circle cx="270" cy="22" r="5" fill="#4c8dff"/><circle cx="270" cy="70" r="5" fill="#4c8dff"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="moment paper" id="lembra">
+    <div class="wrap split">
+      <div class="copy">
+        <span class="kicker">Orientação</span>
+        <h2 class="claim-m">Você explica uma vez. Ela <span class="grad">lembra</span>.</h2>
+        <p class="sub">Escreva as regras do caderno num só lugar. Toda conversa, em qualquer IA, começa por elas. Chega de repetir o mesmo pedido.</p>
+      </div>
+      <div class="guide">
+        <span class="lab">Orientação · Projeto Atlas</span>
+        <h3>Como este caderno é escrito</h3>
+        <ul>
+          <li>Toda decisão vira um ADR numerado, com contexto e alternativas.</li>
+          <li>Entrevista leva o nome da pessoa e a data no título.</li>
+          <li>Frases curtas. Sempre em português.</li>
+          <li>Ligue cada nota às reuniões de onde ela veio.</li>
+        </ul>
+        <div class="foot"><span>Lida pelo Claude</span><span>Lida pelo ChatGPT</span><span>Lida pelo Grok</span><span>Vale em toda conversa</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="moment">
+    <div class="wrap split flip">
+      <div class="copy">
+        <span class="kicker">Pastas que se descrevem</span>
+        <h2 class="claim-m">Tudo no lugar certo. Sem você <span class="grad">pedir</span>.</h2>
+        <p class="sub">Cada pasta diz o que guarda. Você fala do jeito que fala, e a IA sabe exatamente onde cada coisa vai.</p>
+      </div>
+      <div class="route" role="img" aria-label="Quatro pedidos em linguagem natural, cada um indo para a pasta certa">
+        <div class="row"><div class="ask">“Conversei com a Carla, da Loja Norte, hoje.”</div><div class="arrow"></div><div class="dest d2">Entrevistas/<small>2026-11-17 Carla</small></div></div>
+        <div class="row"><div class="ask">“Fechamos com o fornecedor B.”</div><div class="arrow"></div><div class="dest d1">Decisões/<small>ADR-014</small></div></div>
+        <div class="row"><div class="ask">“Acho que um onboarding guiado resolve.”</div><div class="arrow"></div><div class="dest d3">Hipóteses/<small>Onboarding guiado</small></div></div>
+        <div class="row"><div class="ask">“Atualiza o pipeline com esta planilha.”</div><div class="arrow"></div><div class="dest d4">Tabelas/<small>Pipeline · 212 linhas</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="moment white">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker" style="color:#b4541a">Modelos de pasta</span>
+        <h2 class="claim-m">Escrito do <span class="grad">seu</span> jeito. Toda vez.</h2>
+        <p class="sub">Cada pasta tem um modelo. A IA segue o modelo, e cem notas parecem escritas pela mesma mão.</p>
+      </div>
+      <div class="slider" id="ba" style="--x: 50%">
+        <div class="card bad">
+          <span class="tag">IA sem MemorySmith</span>
+          <pre>notas reuniao fornecedor email
+decidimos ir com o B pq o A tava
+dando problema no outlook, ver
+depois o contrato. falar c/ financeiro??
+obs: a ana falou algo sobre prazo</pre>
+        </div>
+        <div class="card good">
+          <span class="tag">IA com MemorySmith</span>
+          <pre><span class="k">status:</span> aceita · <span class="k">data:</span> 2026-11-17
+<span class="h"># ADR-014 Fornecedor de e-mail</span>
+<span class="t">## Contexto</span>
+O fornecedor A não entregava no Outlook.
+<span class="t">## Decisão</span>
+Migrar para o B. Ver <span class="l">[[Reunião 2026-11-12]]</span>.</pre>
+        </div>
+        <input id="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+        <div class="handle" aria-hidden="true"><span>‹ ›</span></div>
+      </div>
+      <p class="hint">Arraste para comparar</p>
+    </div>
+  </section>
+
+  <section class="moment">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker">Trilha de mudanças</span>
+        <h2 class="claim-m">Você sabe quem escreveu <span class="grad">cada linha</span>.</h2>
+        <p class="sub">Pessoa, IA e horário, registrados em toda mudança. Confie no que a IA faz porque você vê o que ela fez.</p>
+      </div>
+      <div class="trail" role="img" aria-label="Exemplo de trilha: cada mudança mostra quem escreveu e por qual IA">
+        <div class="ev"><span class="av" style="background:var(--orange-l)">A</span><div><b>Ana criou ADR-014</b><span>Decisões/ · há 2 minutos</span></div><span class="via c">via Claude</span></div>
+        <div class="ev"><span class="av" style="background:var(--blue-l)">B</span><div><b>Bruno registrou a entrevista com a Carla</b><span>Entrevistas/ · há 1 hora</span></div><span class="via g">via ChatGPT</span></div>
+        <div class="ev"><span class="av" style="background:var(--green-l)">A</span><div><b>Ana revisou Onboarding guiado</b><span>Hipóteses/ · hoje, 09:20</span></div><span class="via w">na web</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="moment paper" id="para-quem">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker">Para quem</span>
+        <h2 class="claim-m">Um caderno para cada <span class="grad">ambição</span>.</h2>
+        <p class="sub">Comece do zero ou de um modelo pronto da comunidade.</p>
+      </div>
+      <div class="uses">
+        <a class="use u1" href="#acesso"><h3>Quem cria produto</h3><div><p>Da primeira entrevista à decisão final, com tudo ligado.</p><div class="fold"><span>Entrevistas/</span><span>Decisões/</span></div></div></a>
+        <a class="use u2" href="#acesso"><h3>Quem pesquisa</h3><div><p>Fontes, fichamentos e hipóteses que viram texto.</p><div class="fold"><span>Fontes/</span><span>Fichamentos/</span></div></div></a>
+        <a class="use u3" href="#acesso"><h3>Quem lidera equipes</h3><div><p>Reuniões, 1:1 e metas em painéis que se atualizam.</p><div class="fold"><span>Reuniões/</span><span>Painéis/</span></div></div></a>
+        <a class="use u4" href="#acesso"><h3>Quem estuda</h3><div><p>Aulas, resumos e revisões que a IA organiza por você.</p><div class="fold"><span>Aulas/</span><span>Revisões/</span></div></div></a>
+      </div>
+    </div>
+  </section>
+
+    <section class="moment paper" id="seu">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker">Seu, de verdade</span>
+        <h2 class="claim-m">No fim, é tudo Markdown. E é tudo <span class="grad">seu</span>.</h2>
+        <p class="sub">Sem prisão. Exporte quando quiser e leve tudo com você.</p>
+      </div>
+      <div class="yours">
+        <div><b>Markdown</b><span>Em formato aberto e publicado.</span></div>
+        <div><b>Exportação</b><span>O caderno inteiro, quando quiser.</span></div>
+        <div><b>Cofre isolado</b><span>Ninguém da plataforma lê o seu conteúdo.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="moment" id="conectar">
+    <div class="wrap split">
+      <div class="copy">
+        <span class="kicker">Conecte em 1 minuto</span>
+        <h2 class="claim-m">Um endereço. Sua IA <span class="grad">pronta</span>.</h2>
+        <p class="sub">Sem instalar nada. Cole o endereço no conector da sua IA, entre com a sua conta e pronto.</p>
+        <div class="url-box">
+          <code id="c-url">https://mcp.memorysmith.app/mcp</code>
+          <button type="button" class="btn btn-hot" id="c-copy">Copiar</button>
+        </div>
+      </div>
+      <div class="connect">
+        <div class="tabs" role="tablist" aria-label="Cliente de IA">
+          <button type="button" role="tab" data-c="claude" aria-selected="true">Claude</button>
+          <button type="button" role="tab" data-c="chatgpt" aria-selected="false">ChatGPT</button>
+          <button type="button" role="tab" data-c="grok" aria-selected="false">Grok</button>
+          <button type="button" role="tab" data-c="outro" aria-selected="false">Outros</button>
+        </div>
+        <ol class="csteps" id="c-steps"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="moment white" id="faq">
+    <div class="wrap faq-wrap">
+      <div class="copy">
+        <span class="kicker" style="color:#b4541a">Perguntas</span>
+        <h2 class="claim-m">Ainda em <span class="grad">dúvida</span>?</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>Preciso saber Markdown?</summary><p>Não. Você pede em linguagem natural e a IA escreve. Na web, você lê e edita cada nota direto na página.</p></details>
+        <details><summary>Funciona com qual IA?</summary><p>Com o Claude, com o ChatGPT, com o Grok e com qualquer cliente que fale MCP, o protocolo aberto de conectores para IA.</p></details>
+        <details><summary>Quem consegue ver o meu conteúdo?</summary><p>Só você e quem você convidar. Cada assinatura é isolada das outras, e nem a administração da plataforma alcança o seu conteúdo.</p></details>
+        <details><summary>Posso levar meus cadernos embora?</summary><p>Pode, quando quiser. A exportação leva o caderno inteiro, e tudo é Markdown, num formato publicado e aberto.</p></details>
+        <details><summary>Por que preciso pedir acesso?</summary><p>As assinaturas são aprovadas uma a uma, para que a plataforma cresça sem perder qualidade.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="acesso">
+    <div class="wrap">
+      <h2 class="claim">Dê memória à sua <span class="grad">IA</span>.</h2>
+      <p class="sub">Peça acesso hoje. Seu primeiro caderno fica pronto em minutos.</p>
+      <small>Vagas liberadas aos poucos, uma assinatura de cada vez.</small>
+    </div>
+  </section>
+</main>
+
+<footer id="footer">
+  <div class="wrap">
+    <img src="assets/logo.svg" alt="MemorySmith">
+    <ul>
+      <li><a href="#footer">Ajuda</a></li>
+      <li><a href="#footer">Entrar</a></li>
+      <li><a href="#top">English</a></li>
+    </ul>
+    <span>© 2026 MemorySmith</span>
+  </div>
+</footer>
+
+  <script src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/background.js"></script>
+</body>
+</html>
