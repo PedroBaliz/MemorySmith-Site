@@ -92,3 +92,18 @@ Depois acesse http://localhost:8000. É preciso internet para carregar as fontes
 
 - [Three.js r128](https://threejs.org/), via cdnjs, para o fundo 3D
 - Google Fonts: Inter, Space Grotesk e JetBrains Mono
+
+
+## Wireframe
+
+Antes do código, o site foi planejado num wireframe de baixa fidelidade feito no Figma ([abrir o arquivo no Figma](https://www.figma.com/design/4y6bZrUmPJUHARww8hJbQ0)). As imagens exportadas ficam em `docs/wireframe/` e também estão na release [v0.1.0 · Wireframe](https://github.com/PedroBaliz/MemorySmith-Site/releases/tag/v0.1.0).
+
+| Tela | Arquivo |
+|---|---|
+| Home · Desktop (1440 px): as 12 seções da página inicial | [01-home-desktop.png](docs/wireframe/01-home-desktop.png) |
+| Login · Desktop (1440 px) | [02-login-desktop.png](docs/wireframe/02-login-desktop.png) |
+| Home · Mobile (390 px) | [03-home-mobile.png](docs/wireframe/03-home-mobile.png) |
+| Painel de acessibilidade aberto | [04-painel-acessibilidade.png](docs/wireframe/04-painel-acessibilidade.png) |
+| Componentes do wireframe (botões, abas, campo, cartão, imagem) | [05-componentes.png](docs/wireframe/05-componentes.png) |
+
+![Wireframe da página de login](docs/wireframe/02-login-desktop.png)
