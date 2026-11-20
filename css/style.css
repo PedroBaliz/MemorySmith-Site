@@ -629,3 +629,58 @@ main:focus { outline: none; }
 :root[data-theme="light"] :is(.login-row a, .login-alt a, .pw button) { color: var(--blue); }
 :root[data-theme="light"] .login-card { box-shadow: 0 40px 90px -40px rgba(14,21,38,.3); }
 @media (max-width: 440px) { .back-link { font-size: 0.82rem; } }
+
+/* =====================================================================
+   Painéis da marca no modo escuro: as faixas .paper e .white deixam de
+   ser blocos claros e viram painéis azul-noite, com um brilho azul e
+   laranja. O modo claro continua com as faixas claras.
+   ===================================================================== */
+:root:not([data-theme="light"]) :is(.paper, .white) {
+  --ink: #edefec; --ink-soft: #a3adc2;
+  color: var(--ink);
+  background:
+    radial-gradient(60% 50% at 0% 0%, rgba(76,141,255,.16), transparent 70%),
+    radial-gradient(50% 45% at 100% 100%, rgba(255,138,43,.12), transparent 70%),
+    linear-gradient(180deg, #111b30, #0d1629);
+  border: 1px solid var(--night-line);
+}
+:root:not([data-theme="light"]) :is(.paper, .white) .kicker { color: var(--orange-l); }
+:root:not([data-theme="light"]) .paper .grad { background-image: linear-gradient(100deg, var(--blue-l) 10%, var(--orange-l) 90%); }
+:root:not([data-theme="light"]) .paper .link { color: var(--blue-l); }
+:root:not([data-theme="light"]) .paper .btn-line { color: var(--paper); border-color: var(--night-line); }
+
+/* Orientação */
+:root:not([data-theme="light"]) .guide { background: var(--night); border: 1px solid var(--night-line); box-shadow: 0 40px 80px -40px rgba(15,86,215,.45); }
+:root:not([data-theme="light"]) .guide .lab { color: var(--blue-l); }
+:root:not([data-theme="light"]) .guide li::before { background: var(--blue-l); box-shadow: inset 0 0 0 5px #1a2b4f; }
+:root:not([data-theme="light"]) .guide .foot { border-top-color: var(--night-line); }
+:root:not([data-theme="light"]) .guide .foot span { background: rgba(255,255,255,.06); }
+
+/* Antes e depois */
+:root:not([data-theme="light"]) .card.bad { background: #1a2233; color: var(--mist); }
+:root:not([data-theme="light"]) .card.bad .tag { color: var(--mist); }
+:root:not([data-theme="light"]) .slider { border: 1px solid var(--night-line); }
+
+/* Para quem: o cartão branco vira verde da marca */
+:root:not([data-theme="light"]) .u3 { border: 1px solid var(--night-line); }
+:root:not([data-theme="light"]) .u4 { background: #127a3a; color: var(--white); }
+:root:not([data-theme="light"]) .u4 .fold span { background: rgba(255,255,255,.16); }
+
+/* Perguntas */
+:root:not([data-theme="light"]) .faq details, :root:not([data-theme="light"]) .faq details:first-child { border-color: var(--night-line); }
+:root:not([data-theme="light"]) .faq summary::after { color: var(--orange-l); }
+:root:not([data-theme="light"]) .faq-search { background: var(--night); border-color: var(--night-line); }
+:root:not([data-theme="light"]) .faq-search:focus-within { border-color: var(--blue-l); box-shadow: 0 0 0 3px rgba(76,141,255,.22); }
+:root:not([data-theme="light"]) .faq-search input::placeholder { color: var(--mist); }
+:root:not([data-theme="light"]) .faq-tabs button { border-color: var(--night-line); }
+:root:not([data-theme="light"]) .faq-tabs button[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: var(--white); }
+:root:not([data-theme="light"]) .faq-empty a { color: var(--blue-l); }
+
+/* Contato */
+:root:not([data-theme="light"]) .contact-form {
+  --err: #ff9b8f; --ok-fg: #7be0a6; --ok-bg: rgba(52,201,122,.14); --bad-fg: #ff9b8f; --bad-bg: rgba(255,107,91,.14);
+  background: var(--night); border: 1px solid var(--night-line); box-shadow: 0 40px 80px -40px rgba(15,86,215,.45); }
+:root:not([data-theme="light"]) .contact-form :is(.field input, .field select, .field textarea) { background: var(--night-2); border-color: var(--night-line); }
+:root:not([data-theme="light"]) .contact-form :is(.field input, .field select, .field textarea):focus { border-color: var(--blue-l); box-shadow: 0 0 0 3px rgba(76,141,255,.22); }
+:root:not([data-theme="light"]) .contact-form .field ::placeholder { color: #7d879c; }
+:root:not([data-theme="light"]) .contact-form .field [aria-invalid="true"] { border-color: var(--err); }
