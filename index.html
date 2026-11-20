@@ -43,10 +43,10 @@
       <p class="sub">Ensine uma vez como você trabalha. Ela escreve do seu jeito, no lugar certo, para sempre.</p>
       <div class="with"><span>Funciona dentro de</span><b>Claude</b><b>ChatGPT</b><b>Grok</b><b>qualquer cliente MCP</b></div>
 
-      <div class="shot" role="img" aria-label="Tela do MemorySmith: o Claude acabou de criar uma nota de decisão na pasta certa do caderno">
+      <div class="shot" id="h-shot" role="group" aria-roledescription="demonstração" aria-label="Tela do MemorySmith: três momentos de um dia com o caderno Projeto Atlas">
         <div class="toast swap" id="h-toast"><i>✓</i><div><b id="h-tb">Claude escreveu em Decisões/</b><span id="h-ts">Decisão 14 · seguiu o modelo da pasta</span></div></div>
         <div class="window">
-          <div class="bar"><i></i><i></i><i></i><span>memorysmith.app</span><span class="dots" id="h-dots" aria-hidden="true"><b class="on"></b><b></b><b></b></span></div>
+          <div class="bar"><i></i><i></i><i></i><span>memorysmith.app</span><span class="dots" id="h-dots"><button type="button" class="on" aria-label="Cena 1 de 3" aria-current="true"></button><button type="button" aria-label="Cena 2 de 3" aria-current="false"></button><button type="button" aria-label="Cena 3 de 3" aria-current="false"></button></span><button type="button" class="h-play" id="h-play" aria-label="Pausar a troca de cenas"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l10 6.5-10 6.5z"/></svg></button></div>
           <div class="app">
             <div class="side" id="h-side">
               <span class="nb">Projeto Atlas</span>
@@ -334,28 +334,26 @@
         <h2 class="claim-m">Escrito do <span class="grad">seu</span> jeito. Toda vez.</h2>
         <p class="sub">Cada pasta tem um modelo. A IA segue o modelo, e cem notas parecem escritas pela mesma mão.</p>
       </div>
-      <div class="slider" id="ba" style="--x: 50%">
+      <div class="ba">
         <div class="card bad">
-          <span class="tag">IA sem MemorySmith</span>
-          <pre>notas reuniao fornecedor email
-decidimos ir com o B pq o A tava
-dando problema no outlook, ver
-depois o contrato. falar c/ financeiro??
-obs: a ana falou algo sobre prazo</pre>
+          <span class="tag">Sem MemorySmith</span>
+          <pre>aula hj sobre fotossintese
+luz + agua + co2 vira glicose
+prof falou q cai na prova??
+ver cap 4 depois</pre>
         </div>
         <div class="card good">
-          <span class="tag">IA com MemorySmith</span>
-          <pre><span class="k">status:</span> aceita · <span class="k">data:</span> 2026-11-17
-<span class="h"># Decisão 14 · Fornecedor de e-mail</span>
-<span class="t">## Por quê</span>
-O fornecedor A não entregava no Outlook.
-<span class="t">## O que decidimos</span>
-Trocar para o B. Ver <span class="l">[[Reunião 2026-11-12]]</span>.</pre>
+          <span class="tag">Com MemorySmith</span>
+          <div class="note">
+            <h3>Aula 12 · Fotossíntese</h3>
+            <p class="meta"><span>Biologia</span><span>18 nov 2026</span></p>
+            <h4>Resumo</h4>
+            <p>Luz, água e gás carbônico viram glicose e oxigênio.</p>
+            <h4>Para revisar</h4>
+            <p>Capítulo 4 do livro. Cai na prova de sexta.</p>
+          </div>
         </div>
-        <input id="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
-        <div class="handle" aria-hidden="true"><span>‹ ›</span></div>
       </div>
-      <p class="hint">Arraste para comparar</p>
     </div>
   </section>
 

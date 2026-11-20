@@ -41,10 +41,10 @@ Depois acesse http://localhost:8000. É preciso internet para carregar as fontes
 | Recurso | Onde está |
 |---|---|
 | Cabeçalho fixo com menu, botão de tema e Entrar | topo das duas páginas |
-| Hero com tela do produto que troca de cena a cada 7 s | `#hero` |
+| Hero com tela do produto que troca de cena a cada 14 s, com pausa e pontinhos para escolher a cena | `#hero` |
 | Abas de capacidades (editor, planilha, BI, projetos, drive, busca) | `#capacidades` |
 | Cartões explicativos (Orientação, pastas, modelos, trilha, Para quem, Seu de verdade) | várias seções |
-| Comparação antes/depois com controle deslizante | seção Modelos de pasta |
+| Comparação lado a lado de uma nota sem e com MemorySmith | seção Modelos de pasta |
 | **Carrossel de imagens** com os modelos da comunidade | `#modelos` |
 | Guia de conexão com abas por IA e botão Copiar | `#conectar` |
 | **Perguntas com pesquisa e abas por tema** | `#faq` |
@@ -59,7 +59,7 @@ Depois acesse http://localhost:8000. É preciso internet para carregar as fontes
 1. **Estrutura em HTML semântico.** Cada parte do site é uma `<section>` com um título `<h2>`, dentro de `<main>`, com `<header>` e `<footer>`. A página é toda em português (`lang="pt-BR"`).
 2. **Identidade visual em variáveis CSS.** As cores, fontes e espaçamentos ficam em variáveis no `:root` de `css/style.css` (`--night`, `--paper`, `--blue`, `--orange`...). A página alterna faixas escuras (noite) e painéis claros (papel), um "momento" por rolagem.
 3. **Layout responsivo.** CSS Grid e Flexbox, tamanhos com `clamp()` e regras `@media` para celular (720 px e menos), tablet e desktop.
-4. **Interações em JavaScript puro** (`js/main.js`): troca de cenas do hero, abas de capacidades, controle antes/depois, guias de conexão e botão Copiar.
+4. **Interações em JavaScript puro** (`js/main.js`): troca de cenas do hero (com pausa), abas de capacidades, carrossel de modelos, guias de conexão e botão Copiar.
 5. **Fundo 3D** (`js/background.js`): o logo desenhado em partículas com Three.js, que se desfaz ao rolar e se junta no final.
 6. **Acessibilidade** (`js/a11y.js`): painel com tema claro/escuro, quatro tamanhos de texto, fundo animado (ligado ou desligado), animações reduzidas e links sublinhados. As escolhas ficam salvas no `localStorage` e valem nas duas páginas. Um script curto no `<head>` aplica a escolha antes de desenhar a página, para o tema não piscar.
 7. **Modo claro.** As variáveis de cor trocam de valor com `:root[data-theme="light"]`. As telas do produto (janela do app, planilha, painel, Kanban) continuam escuras, como prints de um app de tema escuro.

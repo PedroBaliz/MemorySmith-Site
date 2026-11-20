@@ -1,5 +1,5 @@
 /* The interactive moments of the page: the hero's rotating scenarios, the
-   playground, the before/after slider and the connect tabs. */
+   playground and the connect tabs. */
 (function () {
   /* The page opens at its top: the browser does not bring back where the
      last visit stopped, unless the address names a section. */
@@ -49,13 +49,40 @@
         rows[k].querySelector('b').textContent = f === s.f ? s.n : base[f];
       }
       var dots = $('h-dots').children;
-      for (var d = 0; d < dots.length; d++) dots[d].classList.toggle('on', d === i);
+      for (var d = 0; d < dots.length; d++) { dots[d].classList.toggle('on', d === i); dots[d].setAttribute('aria-current', d === i ? 'true' : 'false'); }
       [doc, chat, toast].forEach(function (el) { el.classList.remove('out'); });
     }, 450);
   }
   /* Menos movimento: o painel de acessibilidade ou o sistema pausam a troca. */
   function isReduced() { return window.MSA11y ? window.MSA11y.reduced() : reduce; }
-  setInterval(function () { if (document.hidden || isReduced()) return; cur = (cur + 1) % scenes.length; showScene(cur); }, 7000);
+  /* Troca a cada 14 s. Pausa com o mouse ou o foco em cima, com o botão de
+     pausa (WCAG 2.2.2) e quando a pessoa pede menos movimento. Os pontinhos
+     escolhem a cena e recomeçam a contagem. */
+  var heroPaused = false, heroOver = false, heroTimer;
+  function heroStart() {
+    clearInterval(heroTimer);
+    heroTimer = setInterval(function () {
+      if (heroPaused || heroOver || document.hidden || isReduced()) return;
+      cur = (cur + 1) % scenes.length; showScene(cur);
+    }, 14000);
+  }
+  heroStart();
+  var shot = $('h-shot'), heroPlay = $('h-play');
+  shot.addEventListener('mouseenter', function () { heroOver = true; });
+  shot.addEventListener('mouseleave', function () { heroOver = false; });
+  shot.addEventListener('focusin', function () { heroOver = true; });
+  shot.addEventListener('focusout', function (e) { if (!shot.contains(e.relatedTarget)) heroOver = false; });
+  $('h-dots').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var k = Array.prototype.indexOf.call(this.children, b);
+    if (k !== cur) { cur = k; showScene(cur); }
+    heroStart();
+  });
+  heroPlay.addEventListener('click', function () {
+    heroPaused = !heroPaused;
+    heroPlay.classList.toggle('paused', heroPaused);
+    heroPlay.setAttribute('aria-label', heroPaused ? 'Retomar a troca de cenas' : 'Pausar a troca de cenas');
+  });
 
   /* ---------- capabilities tabs ---------- */
   document.addEventListener("click", function (e) {
@@ -67,9 +94,6 @@
     for (var j = 0; j < panes.length; j++) panes[j].hidden = panes[j].dataset.pane !== t.dataset.cap;
   });
 
-  /* ---------- before / after ---------- */
-  var ba = $('ba'), range = $('ba-range');
-  range.addEventListener('input', function () { ba.style.setProperty('--x', range.value + '%'); });
 
   /* ---------- connect ---------- */
   var guides = {

@@ -89,8 +89,16 @@ main, footer { position: relative; z-index: 1; }
 .swap.out { opacity: 0; transform: translateY(6px); }
 .side div { transition: background .4s ease, color .4s ease; }
 .window .bar .dots { margin-left: auto; display: flex; gap: 6px; }
-.dots b { width: 6px; height: 6px; border-radius: 3px; background: var(--night-line); transition: background .3s ease, width .3s ease; }
-.dots b.on { background: var(--orange-l); width: 18px; }
+.window .bar .dots { gap: 0; }
+.dots button { min-width: 24px; height: 24px; padding: 0 3px; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; }
+.dots button::before { content: ""; width: 6px; height: 6px; border-radius: 3px; background: var(--night-line); transition: background .3s ease, width .3s ease; }
+.dots button:hover::before { background: var(--mist); }
+.dots button.on::before { background: var(--orange-l); width: 18px; }
+.h-play { width: 28px; height: 28px; border: 0; border-radius: 50%; background: transparent; color: var(--mist); display: grid; place-items: center; cursor: pointer; margin-left: 2px; }
+.h-play:hover { color: var(--paper); }
+.h-play svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.h-play .i-play, .h-play.paused .i-pause { display: none; }
+.h-play.paused .i-play { display: block; fill: currentColor; }
 
 /* playground */
 .play { display: grid; gap: 20px; margin-top: clamp(48px, 7vw, 72px); }
@@ -125,16 +133,6 @@ main, footer { position: relative; z-index: 1; }
 .play-out .k { color: var(--blue-l); } .play-out .h { color: var(--white); font-weight: 500; } .play-out .t { color: var(--orange-l); } .play-out .l { color: var(--green-l); } .play-out .v { color: var(--paper); }
 .cursor { display: inline-block; width: 8px; height: 1.1em; background: var(--orange-l); vertical-align: -3px; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
-
-/* before / after */
-.slider { position: relative; margin-top: clamp(48px, 7vw, 80px); border-radius: 24px; overflow: hidden; display: grid; }
-.slider .card { grid-area: 1 / 1; border-radius: 0; min-height: 300px; }
-.slider .card.good { clip-path: inset(0 0 0 var(--x)); box-shadow: none; }
-.slider .handle { position: absolute; top: 0; bottom: 0; left: var(--x); width: 2px; margin-left: -1px; background: var(--orange); pointer-events: none; }
-.slider .handle span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 46px; height: 46px; border-radius: 50%; background: var(--orange); color: var(--night); display: grid; place-items: center; font: 700 1rem var(--display); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
-.slider input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; z-index: 2; }
-.slider input:focus-visible ~ .handle span { outline: 3px solid var(--blue); outline-offset: 3px; }
-.hint { text-align: center; color: var(--ink-soft); font-size: 0.9rem; margin-top: 16px; }
 
 /* connect */
 .url-box { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; background: rgba(17,27,48,.8); border: 1px solid var(--night-line); border-radius: 18px; padding: 8px 8px 8px 18px; max-width: 520px; }
@@ -364,6 +362,13 @@ main, footer { position: relative; z-index: 1; }
 .card.good .tag { color: var(--orange-l); }
 .card pre { margin: 0; font: 0.86rem/1.75 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; }
 .card.bad pre { opacity: .85; }
+.card .note { display: grid; gap: 10px; }
+.note h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.03em; line-height: 1.05; }
+.note .meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.note .meta span { font: 0.75rem var(--mono); padding: 4px 10px; border-radius: 999px; background: rgba(76,141,255,.16); color: var(--blue-l); }
+.note h4 { margin: 8px 0 0; font: 600 0.75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--orange-l); }
+.note p:not(.meta) { font-size: 1.02rem; line-height: 1.5; }
+.card.bad pre { font-size: 0.95rem; }
 .card.good .k { color: var(--blue-l); } .card.good .h { color: var(--white); font-weight: 500; } .card.good .t { color: var(--orange-l); } .card.good .l { color: var(--green-l); }
 
 /* moment 4: trust */
@@ -434,12 +439,6 @@ section.paper + section.paper, section.white + section.paper, section.paper + se
   .cap-tabs { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; width: 100%; border-radius: 999px; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
   .cap-tabs::-webkit-scrollbar { display: none; }
   .cap-tabs button { flex-shrink: 0; white-space: nowrap; scroll-snap-align: start; }
-  /* Before/after: stacked, both whole, no slider. */
-  .slider { display: grid; gap: 12px; overflow: visible; border-radius: 0; }
-  .slider .card { grid-area: auto; border-radius: 20px; min-height: 0; }
-  .slider .card.good { clip-path: none; }
-  .slider .handle, .slider input { display: none; }
-  .hint { display: none; }
   .use { min-height: 0; gap: 22px; }
   .url-box { flex-direction: column; align-items: stretch; padding: 14px; }
   .url-box code { font-size: 0.86rem; text-align: center; }
@@ -529,7 +528,7 @@ main:focus { outline: none; }
 :root[data-theme="light"] .via.g { color: var(--blue); background: rgba(15,86,215,.1); }
 :root[data-theme="light"] .via.w { color: #127a3a; background: rgba(22,163,74,.12); }
 /* Texto sobre laranja continua escuro nos dois modos (contraste acima de 7:1). */
-:root[data-theme="light"] :is(.btn-hot, .cap-tabs button[aria-selected="true"], .u2, .slider .handle span, .toast i, .ev .av) { color: #0b1220; }
+:root[data-theme="light"] :is(.btn-hot, .cap-tabs button[aria-selected="true"], .u2, .toast i, .ev .av) { color: #0b1220; }
 
 /* =====================================================================
    Carrossel de modelos
@@ -659,7 +658,6 @@ main:focus { outline: none; }
 /* Antes e depois */
 :root:not([data-theme="light"]) .card.bad { background: #1a2233; color: var(--mist); }
 :root:not([data-theme="light"]) .card.bad .tag { color: var(--mist); }
-:root:not([data-theme="light"]) .slider { border: 1px solid var(--night-line); }
 
 /* Para quem: o cartão branco vira verde da marca */
 :root:not([data-theme="light"]) .u3 { border: 1px solid var(--night-line); }
