@@ -21,10 +21,10 @@
 
   /* ---------- hero: three moments of a real day ---------- */
   var scenes = [
-    { f: 'dec', n: 14, who: 'Claude', tb: 'Claude escreveu em Decisões/', ts: 'ADR-014 · seguiu o modelo da pasta',
-      doc: '<div class="meta"><span class="ok">aceita</span><span>17 nov 2026</span><span>infra</span><span>e-mail</span></div><h3>ADR-014 · Fornecedor de e-mail</h3><h4>Contexto</h4><p>O fornecedor A não entregava no Outlook. Três clientes reclamaram na mesma semana, como registrado em <a>Reunião 2026-11-12</a>.</p><h4>Decisão</h4><p>Migrar para o fornecedor B até o fim do mês.</p>',
+    { f: 'dec', n: 14, who: 'Claude', tb: 'Claude escreveu em Decisões/', ts: 'Decisão 14 · seguiu o modelo da pasta',
+      doc: '<div class="meta"><span class="ok">aceita</span><span>17 nov 2026</span><span>infra</span><span>e-mail</span></div><h3>Decisão 14 · Fornecedor de e-mail</h3><h4>Por quê</h4><p>O fornecedor A não entregava no Outlook. Três clientes reclamaram na mesma semana, como registrado em <a>Reunião 2026-11-12</a>.</p><h4>O que decidimos</h4><p>Trocar para o fornecedor B até o fim do mês.</p>',
       you: 'Registra que escolhemos o fornecedor B para os e-mails.',
-      ai: 'Li a Orientação do caderno. Decisões viram ADR numerado. <em>Criei o ADR-014 em Decisões/</em>, com contexto e link para a reunião.' },
+      ai: 'Li a Orientação do caderno: cada decisão ganha um número. <em>Registrei a Decisão 14 em Decisões/</em>, com o motivo e o link para a reunião.' },
     { f: 'ent', n: 24, who: 'ChatGPT', tb: 'ChatGPT escreveu em Entrevistas/', ts: 'Carla · nome e data no título',
       doc: '<div class="meta"><span class="ok">entrevista</span><span>17 nov 2026</span><span>varejo</span></div><h3>2026-11-17 · Carla, Loja Norte</h3><h4>O que ouvimos</h4><p>Fecha o caixa numa planilha todo fim de dia e perde quase uma hora com isso.</p><h4>Ligações</h4><p>Reforça a hipótese <a>Onboarding guiado</a>.</p>',
       you: 'Conversei com a Carla, da Loja Norte. Ela fecha o caixa numa planilha.',
