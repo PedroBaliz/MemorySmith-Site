@@ -41,7 +41,7 @@ Depois acesse http://localhost:8000. É preciso internet para carregar as fontes
 | Recurso | Onde está |
 |---|---|
 | Cabeçalho fixo com menu, botão de tema e Entrar | topo das duas páginas |
-| Hero com tela do produto que troca de cena a cada 14 s, com pausa e pontinhos para escolher a cena | `#hero` |
+| Hero com tela do produto que troca de cena a cada 14 s, com setas, pontinhos, teclado e deslizar para trocar à mão | `#hero` |
 | Abas de capacidades (editor, planilha, BI, projetos, drive, busca) | `#capacidades` |
 | Cartões explicativos (Orientação, pastas, modelos, trilha, Para quem, Seu de verdade) | várias seções |
 | Comparação lado a lado de uma nota sem e com MemorySmith | seção Modelos de pasta |
@@ -59,11 +59,11 @@ Depois acesse http://localhost:8000. É preciso internet para carregar as fontes
 1. **Estrutura em HTML semântico.** Cada parte do site é uma `<section>` com um título `<h2>`, dentro de `<main>`, com `<header>` e `<footer>`. A página é toda em português (`lang="pt-BR"`).
 2. **Identidade visual em variáveis CSS.** As cores, fontes e espaçamentos ficam em variáveis no `:root` de `css/style.css` (`--night`, `--paper`, `--blue`, `--orange`...). A página alterna faixas escuras (noite) e painéis claros (papel), um "momento" por rolagem.
 3. **Layout responsivo.** CSS Grid e Flexbox, tamanhos com `clamp()` e regras `@media` para celular (720 px e menos), tablet e desktop.
-4. **Interações em JavaScript puro** (`js/main.js`): troca de cenas do hero (com pausa), abas de capacidades, carrossel de modelos, guias de conexão e botão Copiar.
+4. **Interações em JavaScript puro** (`js/main.js`): troca de cenas do hero (com setas e deslizar), abas de capacidades, carrossel de modelos, guias de conexão e botão Copiar.
 5. **Fundo 3D** (`js/background.js`): o logo desenhado em partículas com Three.js, que se desfaz ao rolar e se junta no final.
 6. **Acessibilidade** (`js/a11y.js`): painel com tema claro/escuro, quatro tamanhos de texto, fundo animado (ligado ou desligado), animações reduzidas e links sublinhados. As escolhas ficam salvas no `localStorage` e valem nas duas páginas. Um script curto no `<head>` aplica a escolha antes de desenhar a página, para o tema não piscar.
 7. **Modo claro.** As variáveis de cor trocam de valor com `:root[data-theme="light"]`. As telas do produto (janela do app, planilha, painel, Kanban) continuam escuras, como prints de um app de tema escuro.
-8. **Carrossel** (`#modelos`): quatro imagens SVG desenhadas na paleta do site, com botões, bolinhas, setas do teclado, deslizar com o dedo, troca automática a cada 6 s e botão de pausar.
+8. **Carrossel** (`#modelos`): quatro imagens SVG desenhadas na paleta do site, com setas sobre a imagem, bolinhas, setas do teclado, arrastar com o dedo ou o mouse e troca automática a cada 6 s, que para de vez na primeira troca manual.
 9. **Perguntas com pesquisa**: busca que ignora acentos e maiúsculas e abas Todas, Produto, Privacidade e Conta.
 10. **Formulários** (contato e login): rótulos ligados a cada campo, mensagens de erro embaixo do campo, foco levado ao primeiro erro e mensagem de resultado anunciada a leitores de tela. São demonstrações: nada é enviado a um servidor.
 11. **Versões no GitHub**: cada etapa acima foi registrada num commit separado. Veja o histórico com `git log` ou na aba Commits do repositório.
@@ -74,7 +74,7 @@ Depois acesse http://localhost:8000. É preciso internet para carregar as fontes
 - Link "Pular para o conteúdo" e foco visível em todos os controles.
 - Tudo funciona pelo teclado. O painel de acessibilidade fecha com `Esc`.
 - Imagens com texto alternativo e elementos decorativos com `aria-hidden`.
-- Carrossel com pausa (critério 2.2.2) e anúncio do slide atual.
+- Carrosséis sem botão de pausa: a troca automática para com o mouse ou o foco em cima, com menos movimento e de vez na primeira troca manual (critério 2.2.2), e o slide atual é anunciado.
 - Respeita a preferência do sistema por menos movimento (`prefers-reduced-motion`).
 
 ## Paleta de cores
