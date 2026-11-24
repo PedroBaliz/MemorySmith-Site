@@ -133,7 +133,7 @@
     lmat.uniforms.uSize.value = w < 640 ? 1.3 : 1;
     // No celular o logo é menor e as partículas se sobrepõem mais; com a
     // mistura aditiva a luz soma e ele estourava. Brilho mais baixo só ali.
-    lmat.uniforms.uAlpha.value = phone ? 0.42 : 1.5;
+    lmat.uniforms.uAlpha.value = phone ? 0.25 : 1.5;
   }
   fit();
   window.addEventListener('resize', fit);
