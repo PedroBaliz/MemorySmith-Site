@@ -131,7 +131,9 @@
     logo.scale.setScalar(phone ? Math.min(visW * 0.42, visH * 0.2) : Math.min(visW * 0.34, visH * 0.42));
     logo.position.y = phone ? visH * 0.27 : visH * 0.06;
     lmat.uniforms.uSize.value = w < 640 ? 1.3 : 1;
-    lmat.uniforms.uAlpha.value = phone ? 0.75 : 1.5;
+    // No celular o logo é menor e as partículas se sobrepõem mais; com a
+    // mistura aditiva a luz soma e ele estourava. Brilho mais baixo só ali.
+    lmat.uniforms.uAlpha.value = phone ? 0.25 : 1.5;
   }
   fit();
   window.addEventListener('resize', fit);
