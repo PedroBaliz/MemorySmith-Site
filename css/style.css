@@ -421,6 +421,16 @@ section.paper + section.paper, section.white + section.paper, section.paper + se
 .hero .sub { text-shadow: 0 2px 18px rgba(11,18,32,.9); }
 .pd-table td:last-child, .pd-table th:last-child { white-space: nowrap; }
 
+/* No computador o texto da abertura e do fechamento fica à esquerda e o
+   símbolo 3D (js/background.js) ocupa a direita. */
+@media (min-width: 720px) {
+  .hero .wrap, .final .wrap { justify-items: start; text-align: left; }
+  .hero .claim, .final .claim { font-size: clamp(2.8rem, 6.2vw, 6rem); }
+  .hero .claim, .hero .sub, .hero .with, .final .claim, .final .sub { max-width: 56%; }
+  .hero .with, .hero .ctas { justify-content: flex-start; }
+  .hero .shot { justify-self: center; }
+}
+
 @media (max-width: 720px) {
   .hero .with { display: block; text-align: center; line-height: 1.9; }
   .hero .with span { display: block; }
