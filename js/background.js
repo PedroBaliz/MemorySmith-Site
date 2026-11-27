@@ -147,10 +147,11 @@
     renderer.setSize(w, h, false);
     camera.aspect = w / h; camera.updateProjectionMatrix();
     var visH = 2 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z, visW = visH * camera.aspect;
-    // The symbol sits behind the headline, a little above center.
+    // No computador o símbolo fica à direita, ao lado do texto alinhado à esquerda.
     // On a phone the symbol sits behind the headline, smaller, clear of the text below it.
     phone = w < 720;
-    logo.scale.setScalar(phone ? Math.min(visW * 0.42, visH * 0.2) : Math.min(visW * 0.34, visH * 0.42));
+    logo.scale.setScalar(phone ? Math.min(visW * 0.42, visH * 0.2) : Math.min(visW * 0.26, visH * 0.4));
+    logo.position.x = phone ? 0 : visW * 0.25;
     logo.position.y = phone ? visH * 0.27 : visH * 0.06;
     lmat.uniforms.uSize.value = w < 640 ? 1.3 : 1;
     // No celular o logo é menor e as partículas se sobrepõem mais; com a
